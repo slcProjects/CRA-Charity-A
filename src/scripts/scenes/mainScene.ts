@@ -16,7 +16,7 @@ export default class MainScene extends Phaser.Scene {
     
     
 
-    const StartGameEngButton = this.add.image(640, 360, 'StartGameEngButton').setInteractive();
+    const StartGameEngButton = this.add.image(645, 360, 'StartGameEngButton').setInteractive();
    
     StartGameEngButton.on('pointerdown', this.buttonClicked, this);
   }
