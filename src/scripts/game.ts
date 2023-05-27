@@ -28,3 +28,9 @@ const config = {
 window.addEventListener('load', () => {
   const game = new Phaser.Game(config)
 })
+
+window.addEventListener('keydown', (event) => {
+  var code = event.code;
+  console.log(code);
+  if(code === 'KeyP' || code === 'Escape') //scene.start('MainScene')
+})
