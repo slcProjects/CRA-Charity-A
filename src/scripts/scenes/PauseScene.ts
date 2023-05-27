@@ -14,7 +14,7 @@ export default class PauseScene extends Phaser.Scene {
 
   create() {
     const text = this.add.text(
-      this.cameras.main.worldView.x + this.DEFAULT_WIDTH / 2 - (this.menuText.length / 2 - (this.menuText.length / 2)), 
+      this.cameras.main.centerX - (this.menuText.length * 10), 
       10, this.menuText, {
       fontSize: '32px',
       fontFamily: 'Arial',
@@ -22,9 +22,6 @@ export default class PauseScene extends Phaser.Scene {
       backgroundColor: '#000000',
       fontStyle: 'bold',
     });
-
-    //text.text = "Pause Menu"; 
-    //Phaser.Display.Align.In.Center(text);
   }
   update() {
    
