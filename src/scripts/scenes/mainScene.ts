@@ -9,12 +9,6 @@ export default class MainScene extends Phaser.Scene {
     super({ key: 'MainScene' })
   }
 
-  // addEventListener('keydown', (event) => {
-  //   var code = event.code;
-  //   console.log(code);
-  //   if(code === 'KeyP' || code === 'Escape') Phaser.
-  // })
-
   create() {
     new PhaserLogo(this, this.cameras.main.width / 2, 0)
     this.fpsText = new FpsText(this)
@@ -27,10 +21,13 @@ export default class MainScene extends Phaser.Scene {
       })
       .setOrigin(1, 0)
 
-    this.input.keyboard.on('keydown-W', () => {
-      console.log('test')
+    this.input.keyboard.on('keydown-P', () => {
+      this.scene.start('PauseScene')
     })
-    //this.input.keyboard.on('keydown_W', this.loadMenu, this);
+
+    this.input.keyboard.on('keydown-ESC', () => {
+      this.scene.start('PauseScene')
+    })
   }
 
   update() {
