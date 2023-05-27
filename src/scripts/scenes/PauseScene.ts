@@ -2,6 +2,10 @@
 import FpsText from '../objects/fpsText'
 
 export default class PauseScene extends Phaser.Scene {
+  DEFAULT_WIDTH = 1280
+  DEFAULT_HEIGHT = 720
+
+  menuText = 'Pause Menu';
   fpsText
 
   constructor() {
@@ -9,7 +13,9 @@ export default class PauseScene extends Phaser.Scene {
   }
 
   create() {
-    const text = this.add.text(10, 10, 'Hello, Phaser!', {
+    const text = this.add.text(
+      this.cameras.main.worldView.x + this.DEFAULT_WIDTH / 2 - (this.menuText.length / 2 - (this.menuText.length / 2)), 
+      10, this.menuText, {
       fontSize: '32px',
       fontFamily: 'Arial',
       color: '#ffffff',
@@ -17,7 +23,8 @@ export default class PauseScene extends Phaser.Scene {
       fontStyle: 'bold',
     });
 
-    text.text = "This is the Main Menu"; 
+    //text.text = "Pause Menu"; 
+    //Phaser.Display.Align.In.Center(text);
   }
   update() {
    
