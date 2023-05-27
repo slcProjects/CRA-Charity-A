@@ -17,7 +17,7 @@ export default class PauseScene extends Phaser.Scene {
       fontStyle: 'bold',
     });
 
-    text.text = "This is the Main Game"; 
+    text.text = "This is the Main Menu"; 
   }
   update() {
    
