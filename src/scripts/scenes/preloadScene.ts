@@ -6,9 +6,17 @@ export default class PreloadScene extends Phaser.Scene {
   preload() {
     this.load.image('phaser-logo', 'assets/img/phaser-logo.png')
     this.load.image('StartGameEngButton', './assets/img/Start-Game-Eng.png')
-    this.load.image('Button1', './assets/img/Start-Game-Eng.png')
-    this.load.image('Button2', './assets/img/Start-Game-Eng.png')
+    this.load.image('Button1', './assets/img/PZ1-1.png')
+    this.load.image('Button2', './assets/img/PZ1-2.png')
+    this.load.image('Button3', './assets/img/PZ1-3.png')
+    this.load.image('Button4', './assets/img/PZ1-4.png')
+    this.load.image('Button5', './assets/img/PZ1-5.png')
+    this.load.image('Button6', './assets/img/PZ1-6.png')
+    this.load.image('Button7', './assets/img/PZ1-7.png')
+    this.load.image('Button8', './assets/img/PZ1-8.png')
+    this.load.image('Button9', './assets/img/PZ1-9.png')
     this.load.image('MainMenu','./assets/img/MainMenu.jpg')
+    this.load.image('Key','./assets/img/PZ1-Key.png')
   }
 
   create() {

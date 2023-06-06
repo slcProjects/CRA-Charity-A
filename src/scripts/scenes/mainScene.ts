@@ -18,7 +18,7 @@ export default class MainScene extends Phaser.Scene {
     
 
     /*
-    For the Background Image, Use to scale it
+    For the Background Image, Use to scale it to fit the screen.
 
     */
 
