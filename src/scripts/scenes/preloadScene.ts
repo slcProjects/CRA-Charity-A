@@ -17,6 +17,11 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('Button9', './assets/img/PZ1-9.png')
     this.load.image('MainMenu','./assets/img/MainMenu.jpg')
     this.load.image('Key','./assets/img/PZ1-Key.png')
+    this.load.image('LeftArrow', './assets/img/LeftArrow.png')
+    this.load.image('LeftArrowSelected', './assets/img/LeftArrowSelected.png')
+    this.load.image('RightArrow', './assets/img/RightArrow.png')
+    this.load.image('RightArrowSelected', './assets/img/RightArrowSelected.png')
+    this.load.image('Continue','./assets/img/Continue.png')
   }
 
   create() {

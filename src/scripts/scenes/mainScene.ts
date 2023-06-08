@@ -1,8 +1,7 @@
 
-import FpsText from '../objects/fpsText'
 
 export default class MainScene extends Phaser.Scene {
-  fpsText
+
 
   constructor() {
     super({ key: 'MainScene' })
@@ -29,7 +28,7 @@ export default class MainScene extends Phaser.Scene {
 
   buttonClicked()
   {
-    this.scene.start('MainGame');
+    this.scene.start('storyScene');
   }
   update() {
    
