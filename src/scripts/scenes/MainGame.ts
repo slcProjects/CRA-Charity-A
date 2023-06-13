@@ -12,17 +12,36 @@ export default class Game extends Phaser.Scene {
           });
     
 
-          const square = this.add.rectangle(
+          const puzzle1 = this.add.rectangle(
             this.cameras.main.width / 2,
             this.cameras.main.height / 2,
             200,
             200,
             0x000000
           );
-          square.setInteractive();
-          square.on('pointerup', () => {
+          puzzle1.x = 350;
+          puzzle1.y = 350;
+
+          puzzle1.setInteractive();
+          puzzle1.on('pointerup', () => {
             this.scene.start('puzzleOne');
           });
+          
+          const puzzle2 = this.add.rectangle(
+            this.cameras.main.width / 2,
+            this.cameras.main.height / 2,
+            200,
+            200,
+            0x000000
+          );
+          puzzle2.x = 950;
+          puzzle2.y = 350;
+
+          puzzle2.setInteractive();
+          puzzle2.on('pointerup', () => {
+            this.scene.start('puzzleTwo');
+          });
+          
           
     
     

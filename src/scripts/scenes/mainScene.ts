@@ -1,7 +1,7 @@
 
 
 export default class MainScene extends Phaser.Scene {
-
+public userName; 
 
   constructor() {
     super({ key: 'MainScene' })
@@ -24,6 +24,8 @@ export default class MainScene extends Phaser.Scene {
     const StartGameEngButton = this.add.image(645, 360, 'StartGameEngButton').setInteractive();
    
     StartGameEngButton.on('pointerdown', this.buttonClicked, this);
+
+ 
   }
 
   buttonClicked()

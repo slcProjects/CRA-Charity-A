@@ -1,6 +1,4 @@
-import {textStyle} from '../objects/fpsStyle';
-
-export default class Puzzle extends Phaser.Scene {
+export default class Puzzle1 extends Phaser.Scene {
   private code ;
  private buttonsPressed 
   private key;
@@ -16,8 +14,7 @@ export default class Puzzle extends Phaser.Scene {
     create()
     {
 
-      this.add.text(0,25,'Puzzle one (Delete this Later)',textStyle);
-      this.key = this.add.image(200, 200, 'Key');
+      this.key = this.add.image(200, 200, 'Key1');
       this.key.setScale(0.1,0.1)
       this.key.setAlpha(0); //Hides image
         const buttons = [] as Phaser.GameObjects.Text[];
@@ -36,6 +33,10 @@ export default class Puzzle extends Phaser.Scene {
             button.x += shiftAmount;
         });
     
+        var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+          this.scene.start('MainGame');//This is meant to change pages
+  
+        });
 
         
       
