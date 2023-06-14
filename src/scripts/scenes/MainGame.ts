@@ -3,7 +3,6 @@ export default class Game extends Phaser.Scene {
         super({ key: 'MainGame' })
       }
 
-
     create()
     {
       if (this.data.get('antler') == null){ // inital false
@@ -70,7 +69,7 @@ export default class Game extends Phaser.Scene {
     
     
           var right = this.add.image(1230, 360, 'RightArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('puzzle3-4');//This is meant to change pages
+            this.scene.start('');//This is meant to change pages
     
           });
     

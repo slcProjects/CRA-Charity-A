@@ -10,7 +10,6 @@ export default class Puzzle1 extends Phaser.Scene {
         this.buttonsPressed = 0;
         this.correctCode = '5839'
     }
-    
     create()
     {
 

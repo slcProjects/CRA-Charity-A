@@ -11,7 +11,6 @@ export default class Game extends Phaser.Scene {
     
           });
     
-
           const puzzle3 = this.add.rectangle(
             this.cameras.main.width / 2,
             this.cameras.main.height / 2,
