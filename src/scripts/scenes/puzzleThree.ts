@@ -26,7 +26,7 @@ constructor() {
 
         if(this.data.get('solvedRiddle')){ // used for saving progress after switching scenes
             textEntry.visible = true;
-            this.key = this.add.image(250, 400, 'Key');
+            this.key = this.add.image(250, 400, 'Key1');
             this.key.setScale(0.1,0.1);
             textEntry.visible = false;
          }
@@ -46,7 +46,7 @@ constructor() {
     });
 
     // Add text  if nit is gem remove and give key else if its to big or they hit enter give key
-    this.input.keyboard.on('keydown', event =>
+    this?.input?.keyboard?.on('keydown', event =>
     {
         if (textEntry.text == 'Enter Text Here:')
         {
@@ -65,7 +65,7 @@ constructor() {
         if(textEntry.text.toLowerCase() == 'gem'){
             this.data.set('solvedRiddle', true);
             textEntry.visible = false;
-            this.key = this.add.image(250, 400, 'Key');
+            this.key = this.add.image(250, 400, 'Key1');
             this.key.setScale(0.1,0.1);
            }
         else if(textEntry.text.length > 3 || event.keyCode === 13){ //enter
@@ -74,8 +74,8 @@ constructor() {
     });
 
 
-    var Return = this.add.image(595, 40, 'Return').setInteractive().on('pointerdown', ()=> {
-        this.scene.start('Puzzle3-4');//This is meant to change pages
+    var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+        this.scene.start('puzzle3-4');//This is meant to change pages
     })
   }
 }
