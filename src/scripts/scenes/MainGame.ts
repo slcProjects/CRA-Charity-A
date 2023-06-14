@@ -3,6 +3,16 @@ export default class Game extends Phaser.Scene {
         super({ key: 'MainGame' })
       }
 
+      /*
+      pointerup: This event is triggered when a pointer (mouse button or touch) is released after being pressed down
+       on a game object. It can be used to detect when the player stops clicking or touching the object.
+
+      pointerout: The pointerout event is triggered when the pointer moves out of a game object. It can be useful 
+        to track when the pointer leaves an object, such as when the player moves the cursor away from a button.
+
+      pointerover: The pointerover event is triggered when the pointer moves onto a game object. It can be used to 
+        detect when the pointer enters an object, such as when the player hovers the cursor over a button.
+      */
 
     create()
     {
@@ -71,7 +81,7 @@ export default class Game extends Phaser.Scene {
     
     
           var right = this.add.image(1230, 360, 'RightArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('puzzle3-4');//This is meant to change pages
+            this.scene.start('MainGame');//This is meant to change pages
     
           });
     
