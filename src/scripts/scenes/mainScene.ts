@@ -1,7 +1,6 @@
 
 
 export default class MainScene extends Phaser.Scene {
-public userName; 
 
   constructor() {
     super({ key: 'MainScene' })

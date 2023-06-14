@@ -3,7 +3,10 @@ export default class Game extends Phaser.Scene {
         super({ key: 'MainGame' })
       }
 
-
+//pointerDown is when user clicks on it
+//pointerup is when user clicks on it
+//pointerover is when user hovers it
+//pointerout is when user isn't hovered over it
     create()
     {
         var left = this.add.image(50, 360, 'LeftArrow').setInteractive().on('pointerdown', ()=> {
