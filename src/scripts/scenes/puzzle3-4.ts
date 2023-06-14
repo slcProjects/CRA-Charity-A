@@ -7,7 +7,7 @@ export default class Game extends Phaser.Scene {
     create()
     {
         var left = this.add.image(50, 360, 'LeftArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('MainGame');//This is meant to change pages
+            this.scene.start('puzzle3-4');//This is meant to change pages
     
           });
     
