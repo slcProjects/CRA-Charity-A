@@ -9,6 +9,7 @@ export default class Game extends Phaser.Scene {
       if (this.data.get('antler') == null){ // inital false
         this.data.set('antler', false)
         }
+        //Change antler to be with key2 from the second puzzle
 
         var left = this.add.image(50, 360, 'LeftArrow').setInteractive().on('pointerdown', ()=> {
             this.scene.start('puzzle3-4');//This is meant to change pages
