@@ -5,6 +5,8 @@ import PuzzleOne from './scenes/puzzleOne'
 import StoryScene from './scenes/storyScene'
 import MainGame from './scenes/MainGame'
 import PuzzleTwo from './scenes/puzzleTwo'
+import PuzzleThree from './scenes/puzzleThree'
+import PuzzleThreeFour from './scenes/puzzle3-4'
 
 
 const DEFAULT_WIDTH = 1280
@@ -20,7 +22,8 @@ const config = {
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT
   },
-  scene: [PreloadScene, MainScene, MainGame, StoryScene, PuzzleOne, PuzzleTwo],
+  scene: [PreloadScene, MainScene, MainGame, StoryScene,
+          PuzzleOne, PuzzleTwo, PuzzleThree, PuzzleThreeFour],
   physics: {
     default: 'arcade',
     arcade: {

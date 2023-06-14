@@ -6,8 +6,12 @@ export default class Game extends Phaser.Scene {
 
     create()
     {
+      if (this.data.get('antler') == null){ // inital false
+        this.data.set('antler', false)
+        }
+
         var left = this.add.image(50, 360, 'LeftArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start();//This is meant to change pages
+            this.scene.start('Puzzle3-4');//This is meant to change pages
     
           });
     
@@ -42,6 +46,12 @@ export default class Game extends Phaser.Scene {
             this.scene.start('puzzleTwo');
           });
           
+          let keyHolder = this.add.text(10, 70, 'I have the key', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
+          keyHolder.setOrigin(0);
+          keyHolder.setInteractive();
+          keyHolder.on('pointerdown', () => {
+          this.data.set('antler', true)
+         });
           
     
     
@@ -60,7 +70,7 @@ export default class Game extends Phaser.Scene {
     
     
           var right = this.add.image(1230, 360, 'RightArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start();//This is meant to change pages
+            this.scene.start('Puzzle3-4');//This is meant to change pages
     
           });
     
