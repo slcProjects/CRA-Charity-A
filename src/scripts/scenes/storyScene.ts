@@ -21,6 +21,7 @@ export default class Game extends Phaser.Scene {
             'outside the window, creating a serene atmosphere. You start to relax when you here a loud',
             'THUD outside the cabin. When you go to investigate you noticed that the doors and windows ',
             'wont open. You decide it is best to look for a way out that does not destory the cabin.'
+            //Possibly Changed, the story
         ];
           var text = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, content, textStyle);
         text.setOrigin(0.5);

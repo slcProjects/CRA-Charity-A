@@ -17,6 +17,11 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('Return','./assets/img/return.png')
     this.load.image('Riddle2','./assets/img/Riddle2.png')
     this.load.image('Riddle1','./assets/img/Riddle1.png')
+    this.load.image('bottleA','./assets/img/bottleA.png')
+    this.load.image('bottleB','./assets/img/bottleB.png')
+    this.load.image('bottleC','./assets/img/bottleC.png')
+    this.load.image('table','./assets/img/Table.png')
+    this.load.image('Key5','./assets/img/northKey.png')
   }
 
   create() {
