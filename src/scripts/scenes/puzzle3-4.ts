@@ -40,7 +40,7 @@ export default class Game extends Phaser.Scene {
     
     
           var right = this.add.image(1230, 360, 'RightArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('MainGame');//This is meant to change pages
+            this.scene.start('endRoom');//This is meant to change pages
     
           });
     
