@@ -7,7 +7,7 @@ constructor() {
   }
 
   create(){
-    this.gotKey = this.scene.get('MainGame').data.get('antler'); // gets data from other scene
+    this.gotKey = this.scene.get('puzzleTwo').data.get('antler'); // gets data from other scene
     if(this.data.get('openedAntlers') == null || this.data.get('solvedRiddle') == null){ // sets starting values once when they are nothing
     this.data.set('openedAntlers', false);
     this.data.set('solvedRiddle', false);
