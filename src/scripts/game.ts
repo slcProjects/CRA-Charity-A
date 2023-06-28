@@ -7,7 +7,11 @@ import MainGame from './scenes/MainGame'
 import PuzzleTwo from './scenes/puzzleTwo'
 import PuzzleThree from './scenes/puzzleThree'
 import PuzzleThreeFour from './scenes/puzzle3-4'
-
+import PuzzleFiveSix from './scenes/puzzle5-6'
+import PuzzleFive from './scenes/puzzleFive'
+import PuzzleSix from './scenes/puzzleSix'
+import EndRoom from './scenes/endRoom'
+import PuzzleSeven from './scenes/puzzleSeven'
 
 const DEFAULT_WIDTH = 1280
 const DEFAULT_HEIGHT = 720
