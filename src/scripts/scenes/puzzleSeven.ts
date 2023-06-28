@@ -13,28 +13,34 @@ constructor() {
 
       let keyHolder = this.add.text(100, 70, 'The exit has opened', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
       keyHolder.visible = false;
-      var scale = .8;
-      var offset = 10;
-      let image = this.add.image(300, 300, 'MainMenu').setScale(scale).setInteractive();
-      image.depth = 1;
-            const outline = this.add.rectangle(
-                this.cameras.main.width*2/3,
-                this.cameras.main.height*2/3,
-                image.width  * scale,
-                image.height * scale,
-                0x808080
-              );
+      var scale = 1;
+      var pieceSize = 64;
+      var images = Array.from(Array(8), () => new Array(8));
       
-
+      var offset = 10;
+      var outlines = Array.from(Array(8), () => new Array(8));
+      for(let x = 0; x < 8; x++){
+        for(let y = 0; y < 8; y++){
+          outlines[x][y] = this.add.rectangle(
+            700 + y * pieceSize,
+            200 + x * pieceSize,
+            pieceSize,
+            pieceSize,
+            0x808080
+          );
+        }
+      } 
+              
       if(this.data.get('openedExit')){
           keyHolder.visible = true;
-          image.setPosition(outline.x,outline.y)
-          image.disableInteractive();
-      
       }
      
-            
-      this.input.setDraggable(image);
+            for(let x = 0; x < 8; x++){
+              for(let y = 0; y < 8; y++){
+                images[x][y] = this.add.image(300, 400, 'MainMenu').setScale(scale).setCrop(pieceSize * y, pieceSize * x, pieceSize, pieceSize);
+                this.input.setHitAreaRectangle(images[x][y], pieceSize * y, pieceSize * x,pieceSize,pieceSize).setDraggable(images[x][y], true);
+              }
+            }
 
         this.input.on('drag', (pointer, gameObject, dragX, dragY) =>
         {
@@ -46,17 +52,7 @@ constructor() {
 
         this.input.on('dragend', () =>
         {
-
-            if((image.x >= (outline.x - offset) && image.x <= (outline.x + offset)) && 
-               (image.y >= (outline.y - offset) && image.y <= (outline.y + offset)))
-               {
-                image.x = outline.x;
-                image.y = outline.y;
-                image.disableInteractive();
-                keyHolder.visible = true;
-                this.data.set('openedExit', true);
-               }
-
+          // in progress
         });
   }
 }

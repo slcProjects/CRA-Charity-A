@@ -12,9 +12,9 @@ constructor() {
     this.data.set('openedAntlers', false);
     this.data.set('solvedRiddle', false);
     }
-    const Antlers = this.add.image(600,100,'Continue').setInteractive(); // this will be the moose antlers in game 
+    const Antlers = this.add.image(600,100,'Continue').setInteractive({ useHandCursor: true }); // this will be the moose antlers in game 
     var riddle = this.add.image(400, 300, 'Riddle1').setScale(.5);
-    var textEntry = this.add.text(200, 500, 'Enter Text Here:', { font: '32px Courier', color : 'black'});
+    var textEntry = this.add.text(200, 500, 'Start typing...', { font: '32px Courier', color : 'black'});
     textEntry.visible = false;
 
     if(this.data.get('openedAntlers')){ // used for saving progress after switching scenes
@@ -23,6 +23,7 @@ constructor() {
         riddle = this.add.image(400, 300, 'Riddle2').setScale(.5);
         textEntry.visible = true;
         Antlers.disableInteractive();
+        Antlers.setAlpha(0.5);
 
         if(this.data.get('solvedRiddle')){ // used for saving progress after switching scenes
             textEntry.visible = true;
@@ -38,6 +39,7 @@ constructor() {
     Antlers.on('pointerdown', ()=> { 
         if(this.gotKey){
            Antlers.disableInteractive();
+           Antlers.setAlpha(0.5);
            this.data.set('openedAntlers', true);
            riddle.destroy();
            riddle = this.add.image(400, 300, 'Riddle2').setScale(.5);
