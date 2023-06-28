@@ -15,13 +15,9 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
 */
     create()
     {
-      if (this.data.get('antler') == null){ // inital false
-        this.data.set('antler', false)
-        }
-        //Change antler to be with key2 from the second puzzle
 
         var left = this.add.image(50, 360, 'LeftArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('puzzle3-4');//This is meant to change pages
+            this.scene.start('endRoom');//This is meant to change pages
     
           });
     
@@ -55,19 +51,8 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
           puzzle2.on('pointerup', () => {
             this.scene.start('puzzleTwo');
           });
-          
-          let keyHolder = this.add.text(10, 70, 'I have the key', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
-          keyHolder.setOrigin(0);
-          keyHolder.setInteractive();
-          keyHolder.on('pointerdown', () => {
-          this.data.set('antler', true)
-         });
-          
-    
-    
-    
-     
-    
+
+            
           left.setScale(2,2);
     
           left.on('pointerover', () => {
