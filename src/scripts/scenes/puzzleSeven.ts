@@ -15,14 +15,23 @@ constructor() {
 
       let keyHolder = this.add.text(100, 70, 'The exit has opened', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
       keyHolder.visible = false;
-           
-      if(this.data.get('openedExit')){
+
+      this.add.text(400, 70, 'Finish Puzzle', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'}).setInteractive().on('pointerdown', ()=> {
+        this.data.set('openedExit', true);
         keyHolder.visible = true;
-    }
+        for(let index = 0; index < images.length; index++)
+          {
+                images.at(index)?.setY(537);
+                images.at(index)?.setX(1036.5);
+                images.at(index)!.disableInteractive();
+          }
+
+      });
+      
 
       var scale = .6;
       var pieceSize = 64 * scale;
-      var offset = 10;
+      var offset = 5;
       const outlines : GameObjects.Rectangle[] = [];
       const images : GameObjects.Image[] = [];
 
@@ -35,14 +44,26 @@ constructor() {
             pieceSize,
             0x808080
           );
+          var value = Phaser.Math.Between(-150, 150);
           outlines.push(outline);
-          let image = this.add.image(300, 537, 'MainMenu').
+          let image = this.add.image(400 + value, 537 + value, 'MainMenu').
                       setCrop(pieceSize * y, pieceSize * x, pieceSize, pieceSize).setDepth(1).
                       setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x,pieceSize,pieceSize), Phaser.Geom.Rectangle.Contains);
           
           this.input.setDraggable(image, true);
           images.push(image);
         }
+
+        if(this.data.get('openedExit')){
+
+          keyHolder.visible = true;
+          for(let index = 0; index < images.length; index++)
+          {
+                images.at(index)?.setY(537);
+                images.at(index)?.setX(1036.5);
+                images.at(index)!.disableInteractive();
+          }
+      }
       }
         this.input.on('drag', (pointer, gameObject, dragX, dragY) =>
         {
@@ -62,7 +83,7 @@ constructor() {
               console.log(outlines.at(56)?.x + ", " + outlines.at(56)?.y);
               console.log(images.at(63)?.x + ", " + images.at(63)?.y);
               console.log(outlines.at(63)?.x + ", " + outlines.at(63)?.y);
-            
+          let count = 0;
           for(let index = 0; index < images.length; index++)
           {
             if((images.at(index)!.x >= 1036.5 - offset && images.at(index)!.x <= 1036.5 + offset) &&
@@ -71,8 +92,12 @@ constructor() {
                 images.at(index)?.setY(537);
                 images.at(index)?.setX(1036.5);
                 images.at(index)!.disableInteractive();
-                
+                count++;
                }
+          }
+          if(count >=64){
+            this.data.set('openedExit', true);
+            keyHolder.visible = true;
           }
             
         });
