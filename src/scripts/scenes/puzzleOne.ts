@@ -1,3 +1,4 @@
+import { createHintScene } from '../objects/hints'
 export default class Puzzle1 extends Phaser.Scene {
   private code ;
  private buttonsPressed 
@@ -12,7 +13,14 @@ export default class Puzzle1 extends Phaser.Scene {
     }
     create()
     {
+      var hints = [
+        "Hint 1: This is the first hint.",
+        "Hint 2: This is the second hint.",
+        "Hint 3: This is the third hint."
+      ];
 
+      const hintScene = createHintScene.call(this, hints);
+    hintScene.call(this);
       this.key = this.add.image(200, 200, 'Key1');
       this.key.setScale(0.1,0.1)
       this.key.setAlpha(0); //Hides image

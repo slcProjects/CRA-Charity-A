@@ -15,6 +15,12 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
 */
     create()
     {
+
+      const image = this.add.image(0,0,'lobby')
+      image.setOrigin(0.5);
+      image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
+      image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
+      
       if (this.data.get('antler') == null){ // inital false
         this.data.set('antler', false)
         }
@@ -29,32 +35,55 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
           const puzzle1 = this.add.rectangle(
             this.cameras.main.width / 2,
             this.cameras.main.height / 2,
-            200,
-            200,
-            0x000000
+            280, 
+            145, 
+            
           );
-          puzzle1.x = 350;
-          puzzle1.y = 350;
+          puzzle1.setStrokeStyle(2, 0x000000);
+          puzzle1.x = 780;
+          puzzle1.y = 435;
 
           puzzle1.setInteractive();
           puzzle1.on('pointerup', () => {
             this.scene.start('puzzleOne');
           });
-          
+
+         
+          puzzle1.on('pointerover', () => {
+            image.setTexture('lobbyHF');
+         })
+   
+         puzzle1.on('pointerout', () => { 
+           image.setTexture('lobby');
+         })
+
           const puzzle2 = this.add.rectangle(
             this.cameras.main.width / 2,
             this.cameras.main.height / 2,
-            200,
-            200,
-            0x000000
+            300,
+            290
+            
           );
-          puzzle2.x = 950;
-          puzzle2.y = 350;
+          puzzle2.setStrokeStyle(2, 0x000000);
+          puzzle2.x = 370; //370
+          puzzle2.y = 350; //350
+
+          
 
           puzzle2.setInteractive();
           puzzle2.on('pointerup', () => {
             this.scene.start('puzzleTwo');
           });
+
+          
+          puzzle2.on('pointerover', () => {
+            image.setTexture('lobbyH');
+         })
+   
+         puzzle2.on('pointerout', () => { 
+           image.setTexture('lobby');
+         })
+
           
           let keyHolder = this.add.text(10, 70, 'I have the key', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
           keyHolder.setOrigin(0);

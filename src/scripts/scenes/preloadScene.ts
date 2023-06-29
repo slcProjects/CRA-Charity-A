@@ -22,6 +22,9 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('bottleC','./assets/img/bottleC.png')
     this.load.image('table','./assets/img/Table.png')
     this.load.image('Key5','./assets/img/northKey.png')
+    this.load.image('lobby','./assets/img/Lobby.png')
+    this.load.image('lobbyH','./assets/img/LobbyHighlight.png')
+    this.load.image('lobbyHF','./assets/img/LobbyHF.png')
   }
 
   create() {
@@ -40,5 +43,6 @@ export default class PreloadScene extends Phaser.Scene {
     //     this.scene.add('MainScene', mainScene.default, true)
     //   })
     // else console.log('The mainScene class will not even be loaded by the browser')
+    
   }
 }

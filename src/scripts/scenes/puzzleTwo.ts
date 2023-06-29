@@ -1,3 +1,4 @@
+import { createHintScene } from '../objects/hints'
 export default class Puzzle2 extends Phaser.Scene {
     private symbolButtons: Phaser.GameObjects.Rectangle[] = [];
     private secretCompartment: Phaser.GameObjects.Image | undefined;
@@ -9,6 +10,14 @@ export default class Puzzle2 extends Phaser.Scene {
     }
   
     create() {
+      var hints = [
+        "Hint 1: This is the first hint.",
+        "Hint 2: This is the second hint.",
+        "Hint 3: This is the third hint."
+      ];
+
+      const hintScene = createHintScene.call(this, hints);
+    hintScene.call(this);
       // Add the 'Return' button
       const Return: Phaser.GameObjects.Image = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', () => {
         this.scene.start('MainGame');

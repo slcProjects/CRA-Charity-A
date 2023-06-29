@@ -1,3 +1,4 @@
+import { createHintScene } from '../objects/hints'
 export default class Puzzle3 extends Phaser.Scene {
     private gotKey;
     private key;
@@ -6,6 +7,14 @@ constructor() {
      this.gotKey = false;
   }
   create(){
+    var hints = [
+        "Hint 1: This is the first hint.",
+        "Hint 2: This is the second hint.",
+        "Hint 3: This is the third hint."
+      ];
+
+      const hintScene = createHintScene.call(this, hints);
+    hintScene.call(this);
     this.gotKey = this.scene.get('MainGame').data.get('antler'); // gets data from other scene
     if(this.data.get('openedAntlers') == null || this.data.get('solvedRiddle') == null){ // sets starting values once when they are nothing
     this.data.set('openedAntlers', false);
