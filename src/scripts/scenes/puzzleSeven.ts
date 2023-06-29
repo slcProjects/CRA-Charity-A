@@ -1,3 +1,5 @@
+import { GameObjects } from "phaser";
+
 export default class Puzzle7 extends Phaser.Scene {
     
 constructor() {
@@ -13,35 +15,35 @@ constructor() {
 
       let keyHolder = this.add.text(100, 70, 'The exit has opened', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
       keyHolder.visible = false;
-      var scale = 1;
-      var pieceSize = 64;
-      var images = Array.from(Array(8), () => new Array(8));
-      
+           
+      if(this.data.get('openedExit')){
+        keyHolder.visible = true;
+    }
+
+      var scale = .6;
+      var pieceSize = 64 * scale;
       var offset = 10;
-      var outlines = Array.from(Array(8), () => new Array(8));
+      const outlines : GameObjects.Rectangle[] = [];
+      const images : GameObjects.Image[] = [];
+
       for(let x = 0; x < 8; x++){
         for(let y = 0; y < 8; y++){
-          outlines[x][y] = this.add.rectangle(
-            700 + y * pieceSize,
-            200 + x * pieceSize,
+          var  outline = this.add.rectangle(
+            800+ y*pieceSize,
+            300+ x*pieceSize,
             pieceSize,
             pieceSize,
             0x808080
           );
+          outlines.push(outline);
+          let image = this.add.image(300, 537, 'MainMenu').
+                      setCrop(pieceSize * y, pieceSize * x, pieceSize, pieceSize).setDepth(1).
+                      setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x,pieceSize,pieceSize), Phaser.Geom.Rectangle.Contains);
+          
+          this.input.setDraggable(image, true);
+          images.push(image);
         }
-      } 
-              
-      if(this.data.get('openedExit')){
-          keyHolder.visible = true;
       }
-     
-            for(let x = 0; x < 8; x++){
-              for(let y = 0; y < 8; y++){
-                images[x][y] = this.add.image(300, 400, 'MainMenu').setScale(scale).setCrop(pieceSize * y, pieceSize * x, pieceSize, pieceSize);
-                this.input.setHitAreaRectangle(images[x][y], pieceSize * y, pieceSize * x,pieceSize,pieceSize).setDraggable(images[x][y], true);
-              }
-            }
-
         this.input.on('drag', (pointer, gameObject, dragX, dragY) =>
         {
 
@@ -50,9 +52,29 @@ constructor() {
 
         });
 
-        this.input.on('dragend', () =>
+        this.input.on('dragend', (gameObject) =>
         {
-          // in progress
+          console.log(images.at(0)?.x + ", " + images.at(0)?.y);
+              console.log(outlines.at(0)?.x + ", " + outlines.at(0)?.y);
+              console.log(images.at(7)?.x + ", " + images.at(7)?.y);
+              console.log(outlines.at(7)?.x + ", " + outlines.at(7)?.y);
+              console.log(images.at(56)?.x + ", " + images.at(56)?.y);
+              console.log(outlines.at(56)?.x + ", " + outlines.at(56)?.y);
+              console.log(images.at(63)?.x + ", " + images.at(63)?.y);
+              console.log(outlines.at(63)?.x + ", " + outlines.at(63)?.y);
+            
+          for(let index = 0; index < images.length; index++)
+          {
+            if((images.at(index)!.x >= 1036.5 - offset && images.at(index)!.x <= 1036.5 + offset) &&
+               (images.at(index)!.y >= 537 - offset && images.at(index)!.y <= 537 + offset)){
+
+                images.at(index)?.setY(537);
+                images.at(index)?.setX(1036.5);
+                images.at(index)!.disableInteractive();
+                
+               }
+          }
+            
         });
   }
 }
