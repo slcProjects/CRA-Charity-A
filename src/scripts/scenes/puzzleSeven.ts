@@ -75,14 +75,6 @@ constructor() {
 
         this.input.on('dragend', (gameObject) =>
         {
-          console.log(images.at(0)?.x + ", " + images.at(0)?.y);
-              console.log(outlines.at(0)?.x + ", " + outlines.at(0)?.y);
-              console.log(images.at(7)?.x + ", " + images.at(7)?.y);
-              console.log(outlines.at(7)?.x + ", " + outlines.at(7)?.y);
-              console.log(images.at(56)?.x + ", " + images.at(56)?.y);
-              console.log(outlines.at(56)?.x + ", " + outlines.at(56)?.y);
-              console.log(images.at(63)?.x + ", " + images.at(63)?.y);
-              console.log(outlines.at(63)?.x + ", " + outlines.at(63)?.y);
           let count = 0;
           for(let index = 0; index < images.length; index++)
           {
