@@ -13,6 +13,11 @@ export default class Puzzle1 extends Phaser.Scene {
     }
     create()
     {
+      const image = this.add.image(0,0,'FirePit')
+      image.setOrigin(0.5);
+      image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
+      image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
+      
       var hints = [
         "Hint 1: This is the first hint.",
         "Hint 2: This is the second hint.",
@@ -26,7 +31,7 @@ export default class Puzzle1 extends Phaser.Scene {
       this.key.setAlpha(0); //Hides image
         const buttons = [] as Phaser.GameObjects.Text[];
         for (let i = 1; i <= 9; i++) {
-           const button = this.add.text(100 + ((i - 1) % 3) * 150, 100 + Math.floor((i - 1) / 3) * 150, i.toString(), { fontFamily: 'Arial', fontSize: '32px', color: '#808080' });
+           const button = this.add.text(170 + ((i - 1) % 3) * 100, 80 + Math.floor((i - 1) / 3) * 80, i.toString(), { fontFamily: 'Arial', fontSize: '32px', color: '#000000' });
             button.setOrigin(0.5);
             button.setInteractive({ useHandCursor: true });
             button.on('pointerup', () => {
@@ -61,14 +66,14 @@ export default class Puzzle1 extends Phaser.Scene {
       console.log(button.text);
       this.disableButton(button);
       if (this.buttonsPressed === 4) {
-          console.log('Code entered:', this.code);
+          
           if(this.code === this.correctCode)
           {
             this.key.setAlpha(1);
-            console.log('Code is correct!');
+           
           }
           else{
-            console.log('Code is Wrong try again');
+        
              
             this.resetButtons();
 
