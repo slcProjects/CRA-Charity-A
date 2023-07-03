@@ -6,10 +6,7 @@ export default class Game extends Phaser.Scene {
 
     create()
     {
-        var left = this.add.image(50, 360, 'LeftArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('puzzle3-4');//This is meant to change pages
-    
-          });
+        
     
           const puzzle3 = this.add.rectangle(
             this.cameras.main.width / 2,
@@ -27,16 +24,7 @@ export default class Game extends Phaser.Scene {
           });
           
     
-          left.setScale(2,2);
-    
-          left.on('pointerover', () => {
-             left.setTexture('LeftArrowSelected');
-          })
-    
-          left.on('pointerout', () => { 
-            left.setTexture('LeftArrow');
-          })
-    
+          
     
           var right = this.add.image(1230, 360, 'RightArrow').setInteractive().on('pointerdown', ()=> {
             this.scene.start('MainGame');//This is meant to change pages
