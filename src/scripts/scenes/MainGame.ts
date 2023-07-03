@@ -15,6 +15,7 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
 */
     create()
     {
+<<<<<<< HEAD
 
       const image = this.add.image(0,0,'lobby')
       image.setOrigin(0.5);
@@ -25,9 +26,11 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
         this.data.set('antler', false)
         }
         //Change antler to be with key2 from the second puzzle
+=======
+>>>>>>> 3ff315027606385ad2ad739408524deee3349211
 
         var left = this.add.image(50, 360, 'LeftArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('puzzle3-4');//This is meant to change pages
+            this.scene.start('endRoom');//This is meant to change pages
     
           });
     
@@ -75,6 +78,7 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
             this.scene.start('puzzleTwo');
           });
 
+<<<<<<< HEAD
           
           puzzle2.on('pointerover', () => {
             image.setTexture('lobbyH');
@@ -97,6 +101,9 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
     
      
     
+=======
+            
+>>>>>>> 3ff315027606385ad2ad739408524deee3349211
           left.setScale(2,2);
     
           left.on('pointerover', () => {
@@ -109,7 +116,7 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
     
     
           var right = this.add.image(1230, 360, 'RightArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('puzzle5-6');//This is meant to change pages
+            this.scene.start('puzzle3-4');//This is meant to change pages
     
           });
     

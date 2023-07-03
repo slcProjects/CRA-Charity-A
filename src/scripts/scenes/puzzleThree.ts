@@ -7,6 +7,7 @@ constructor() {
      this.gotKey = false;
   }
   create(){
+<<<<<<< HEAD
     var hints = [
         "Hint 1: This is the first hint.",
         "Hint 2: This is the second hint.",
@@ -16,13 +17,16 @@ constructor() {
       const hintScene = createHintScene.call(this, hints);
     hintScene.call(this);
     this.gotKey = this.scene.get('MainGame').data.get('antler'); // gets data from other scene
+=======
+    this.gotKey = this.scene.get('puzzleTwo').data.get('antler'); // gets data from other scene
+>>>>>>> 3ff315027606385ad2ad739408524deee3349211
     if(this.data.get('openedAntlers') == null || this.data.get('solvedRiddle') == null){ // sets starting values once when they are nothing
     this.data.set('openedAntlers', false);
     this.data.set('solvedRiddle', false);
     }
-    const Antlers = this.add.image(600,100,'Continue').setInteractive(); // this will be the moose antlers in game 
+    const Antlers = this.add.image(600,100,'Continue').setInteractive({ useHandCursor: true }); // this will be the moose antlers in game 
     var riddle = this.add.image(400, 300, 'Riddle1').setScale(.5);
-    var textEntry = this.add.text(200, 500, 'Enter Text Here:', { font: '32px Courier', color : 'black'});
+    var textEntry = this.add.text(200, 500, 'Start typing...', { font: '32px Courier', color : 'black'});
     textEntry.visible = false;
 
     if(this.data.get('openedAntlers')){ // used for saving progress after switching scenes
@@ -31,6 +35,7 @@ constructor() {
         riddle = this.add.image(400, 300, 'Riddle2').setScale(.5);
         textEntry.visible = true;
         Antlers.disableInteractive();
+        Antlers.setAlpha(0.5);
 
         if(this.data.get('solvedRiddle')){ // used for saving progress after switching scenes
             textEntry.visible = true;
@@ -46,6 +51,7 @@ constructor() {
     Antlers.on('pointerdown', ()=> { 
         if(this.gotKey){
            Antlers.disableInteractive();
+           Antlers.setAlpha(0.5);
            this.data.set('openedAntlers', true);
            riddle.destroy();
            riddle = this.add.image(400, 300, 'Riddle2').setScale(.5);

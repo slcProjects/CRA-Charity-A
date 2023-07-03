@@ -22,6 +22,11 @@ export default class Puzzle2 extends Phaser.Scene {
       const Return: Phaser.GameObjects.Image = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', () => {
         this.scene.start('MainGame');
       });
+
+      if (this.data.get('antler') == null){ // inital false
+        this.data.set('antler', false)
+        }
+        //Change antler to be with key2 from the second puzzle
   
       // Create the book symbols
       const symbols: string[] = ['Triangle', 'C', '8', 'Circle', 'A', '4'];
@@ -86,6 +91,11 @@ export default class Puzzle2 extends Phaser.Scene {
     private revealSecretCompartment() {
       if (!this.secretCompartment) {
         this.secretCompartment = this.add.image(1000,100, 'Key2' );
+        this.secretCompartment.setInteractive();
+        this.secretCompartment.on('pointerdown', () => {
+        this.secretCompartment?.destroy();
+        this.data.set('antler', true);
+         });
         this.secretCompartment.setScale(0.5)
       }
     }
