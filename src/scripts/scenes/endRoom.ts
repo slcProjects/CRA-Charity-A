@@ -1,32 +1,33 @@
 export default class Game extends Phaser.Scene {
     constructor() {
-        super({ key: 'puzzle5-6' })
+        super({ key: 'endRoom' })
       }
 
 
-      create()
-      {
+    create()
+    {
         var left = this.add.image(50, 360, 'LeftArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('puzzle3-4');//This is meant to change pages
+            this.scene.start('puzzle5-6');//This is meant to change pages
     
           });
-
-          const puzzle5 = this.add.rectangle(
+    
+          const puzzle7 = this.add.rectangle(
             this.cameras.main.width / 2,
             this.cameras.main.height / 2,
             200,
             200,
             0x000000
           );
-          puzzle5.x = 350;
-          puzzle5.y = 350;
-
-          puzzle5.setInteractive();
-          puzzle5.on('pointerup', () => {
-            this.scene.start('puzzleFive');
+          puzzle7.x = 350;
+          puzzle7.y = 350;
+          let keyHolder = this.add.text(10, 70, 'This is end room', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
+          keyHolder.setOrigin(0);
+          puzzle7.setInteractive();
+          puzzle7.on('pointerup', () => {
+            this.scene.start('puzzleSeven');
           });
           
-         
+    
           left.setScale(2,2);
     
           left.on('pointerover', () => {
@@ -36,9 +37,10 @@ export default class Game extends Phaser.Scene {
           left.on('pointerout', () => { 
             left.setTexture('LeftArrow');
           })
-
+    
+    
           var right = this.add.image(1230, 360, 'RightArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('endRoom');//This is meant to change pages
+            this.scene.start('MainGame');//This is meant to change pages
     
           });
     
@@ -51,5 +53,6 @@ export default class Game extends Phaser.Scene {
          right.on('pointerout', () => { 
            right.setTexture('RightArrow');
          })
-      }
+    
     }
+}
