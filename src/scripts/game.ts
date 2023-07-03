@@ -9,8 +9,6 @@ import PuzzleThree from './scenes/puzzleThree'
 import PuzzleThreeFour from './scenes/puzzle3-4'
 import PuzzleFiveSix from './scenes/puzzle5-6'
 import PuzzleFive from './scenes/puzzleFive'
-import PuzzleSix from './scenes/puzzleSix'
-import EndRoom from './scenes/endRoom'
 import PuzzleSeven from './scenes/puzzleSeven'
 
 const DEFAULT_WIDTH = 1280
@@ -27,7 +25,7 @@ const config = {
     height: DEFAULT_HEIGHT
   },
   scene: [PreloadScene, MainScene, MainGame, StoryScene,
-          PuzzleOne, PuzzleTwo, PuzzleThree, PuzzleThreeFour, PuzzleFiveSix, PuzzleFive, PuzzleSix,EndRoom, PuzzleSeven],
+          PuzzleOne, PuzzleTwo, PuzzleThree, PuzzleThreeFour, PuzzleFiveSix, PuzzleFive, PuzzleSeven],
   physics: {
     default: 'arcade',
     arcade: {

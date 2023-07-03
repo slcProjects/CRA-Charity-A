@@ -1,5 +1,5 @@
 import { GameObjects } from "phaser";
-
+import { createHintScene } from '../objects/hints'
 export default class Puzzle7 extends Phaser.Scene {
     
 constructor() {
@@ -7,11 +7,20 @@ constructor() {
   }
   create(){
     var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
-        this.scene.start('endRoom');//This is meant to change pages
+        this.scene.start('puzzle3-4');//This is meant to change pages
       });
       if(this.data.get('openedExit') == null){
       this.data.set('openedExit', false);
       }
+
+      var hints = [
+        "Hint 1: This is the first hint.",
+        "Hint 2: This is the second hint.",
+        "Hint 3: This is the third hint."
+      ];
+
+      const hintScene = createHintScene.call(this, hints);
+    hintScene.call(this);
 
       let keyHolder = this.add.text(100, 70, 'The exit has opened', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
       keyHolder.visible = false;

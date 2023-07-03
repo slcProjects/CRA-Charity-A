@@ -7,7 +7,6 @@ constructor() {
      this.gotKey = false;
   }
   create(){
-<<<<<<< HEAD
     var hints = [
         "Hint 1: This is the first hint.",
         "Hint 2: This is the second hint.",
@@ -17,9 +16,6 @@ constructor() {
       const hintScene = createHintScene.call(this, hints);
     hintScene.call(this);
     this.gotKey = this.scene.get('MainGame').data.get('antler'); // gets data from other scene
-=======
-    this.gotKey = this.scene.get('puzzleTwo').data.get('antler'); // gets data from other scene
->>>>>>> 3ff315027606385ad2ad739408524deee3349211
     if(this.data.get('openedAntlers') == null || this.data.get('solvedRiddle') == null){ // sets starting values once when they are nothing
     this.data.set('openedAntlers', false);
     this.data.set('solvedRiddle', false);

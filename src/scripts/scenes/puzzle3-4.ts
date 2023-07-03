@@ -23,11 +23,24 @@ export default class Game extends Phaser.Scene {
             this.scene.start('puzzleThree');
           });
           
-    
+          const puzzle7 = this.add.rectangle(
+            this.cameras.main.width / 2,
+            this.cameras.main.height / 2,
+            200,
+            200,
+            0x000000
+          );
+          puzzle7.x = 900;
+          puzzle7.y = 350;
+          puzzle7.setInteractive();
+          puzzle7.on('pointerup', () => {
+            this.scene.start('puzzleSeven');
+          });
+
           
     
           var right = this.add.image(1230, 360, 'RightArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('puzzle5-6');//This is meant to change pages
+            this.scene.start('MainGame');//This is meant to change pages
     
           });
     
