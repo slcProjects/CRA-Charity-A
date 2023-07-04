@@ -11,6 +11,7 @@ export function createHintScene(hints: string[]) {
     const hintPopup = scene.add.container(DEFAULT_WIDTH / 2 + 200, DEFAULT_HEIGHT / 2 - 50);
     hintPopup.setVisible(false);
     hintPopup.setDepth(2);
+    
 
     // Create the hint popup background
     const popupBackground = scene.add.rectangle(0, 0, 570, 285, 0xeeeeee);

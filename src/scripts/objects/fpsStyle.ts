@@ -1,5 +1,5 @@
 export const textStyle = {
-    font: 'bold 24px Arial',
-    fill: '#000000', // Black color
+    font: 'bold 28px Arial',
+    fill: '#FFFFFF', // White color
     align: 'center'
   };
