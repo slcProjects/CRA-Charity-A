@@ -22,7 +22,7 @@ constructor() {
       const hintScene = createHintScene.call(this, hints);
     hintScene.call(this);
 
-      let keyHolder = this.add.text(100, 70, 'The exit has opened', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
+      let keyHolder = this.add.text(100, 70, 'The puzzle is complete', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
       keyHolder.visible = false;
 
       this.add.text(400, 70, 'Finish Puzzle', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'}).setInteractive().on('pointerdown', ()=> {
@@ -30,8 +30,8 @@ constructor() {
         keyHolder.visible = true;
         for(let index = 0; index < images.length; index++)
           {
-                images.at(index)?.setY(537);
-                images.at(index)?.setX(1036.5);
+                images.at(index)?.setY(517);
+                images.at(index)?.setX(1018);
                 images.at(index)!.disableInteractive();
           }
 
@@ -39,13 +39,13 @@ constructor() {
       
 
       var scale = .6;
-      var pieceSize = 64 * scale;
+      var pieceSize = 128 * scale;
       var offset = 5;
       const outlines : GameObjects.Rectangle[] = [];
       const images : GameObjects.Image[] = [];
 
-      for(let x = 0; x < 8; x++){
-        for(let y = 0; y < 8; y++){
+      for(let x = 0; x < 4; x++){
+        for(let y = 0; y < 4; y++){
           var  outline = this.add.rectangle(
             800+ y*pieceSize,
             300+ x*pieceSize,
@@ -68,8 +68,8 @@ constructor() {
           keyHolder.visible = true;
           for(let index = 0; index < images.length; index++)
           {
-                images.at(index)?.setY(537);
-                images.at(index)?.setX(1036.5);
+                images.at(index)?.setY(517);
+                images.at(index)?.setX(1018);
                 images.at(index)!.disableInteractive();
           }
       }
@@ -87,16 +87,16 @@ constructor() {
           let count = 0;
           for(let index = 0; index < images.length; index++)
           {
-            if((images.at(index)!.x >= 1036.5 - offset && images.at(index)!.x <= 1036.5 + offset) &&
-               (images.at(index)!.y >= 537 - offset && images.at(index)!.y <= 537 + offset)){
+            if((images.at(index)!.x >= 1018 - offset && images.at(index)!.x <= 1018 + offset) &&
+               (images.at(index)!.y >= 517 - offset && images.at(index)!.y <= 517 + offset)){
 
-                images.at(index)?.setY(537);
-                images.at(index)?.setX(1036.5);
+                images.at(index)?.setY(517);
+                images.at(index)?.setX(1018);
                 images.at(index)!.disableInteractive();
                 count++;
                }
           }
-          if(count >=64){
+          if(count >=16){
             this.data.set('openedExit', true);
             keyHolder.visible = true;
           }

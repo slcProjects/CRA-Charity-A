@@ -5,6 +5,7 @@ export default class Puzzle3 extends Phaser.Scene {
 constructor() {
     super({ key: 'puzzleThree' })
      this.gotKey = false;
+     this.key = false;
   }
   create(){
     var hints = [
@@ -15,13 +16,14 @@ constructor() {
 
       const hintScene = createHintScene.call(this, hints);
     hintScene.call(this);
-    this.gotKey = this.scene.get('MainGame').data.get('antler'); // gets data from other scene
+    this.gotKey = this.scene.get('puzzleTwo').data.get('antler'); // gets data from other scene
     if(this.data.get('openedAntlers') == null || this.data.get('solvedRiddle') == null){ // sets starting values once when they are nothing
     this.data.set('openedAntlers', false);
     this.data.set('solvedRiddle', false);
     }
     const Antlers = this.add.image(600,100,'Continue').setInteractive({ useHandCursor: true }); // this will be the moose antlers in game 
     var riddle = this.add.image(400, 300, 'Riddle1').setScale(.5);
+    let key = this.add.image(850, 400, 'Key1').setScale(0.1,0.1).setInteractive().setVisible(false);
     var textEntry = this.add.text(200, 500, 'Start typing...', { font: '32px Courier', color : 'black'});
     textEntry.visible = false;
 
@@ -35,12 +37,17 @@ constructor() {
 
         if(this.data.get('solvedRiddle')){ // used for saving progress after switching scenes
             textEntry.visible = true;
-            this.key = this.add.image(250, 400, 'Key1');
-            this.key.setScale(0.1,0.1);
+            if(!this.key)
+            key.setVisible(true);
             textEntry.visible = false;
          }
     
     }
+    key.on('pointerdown', ()=> { 
+        key.destroy();
+        this.key = true;
+    });
+
 
    
     //if click antlers with key show next riddle
@@ -75,8 +82,7 @@ constructor() {
         if(textEntry.text.toLowerCase() == 'gem'){
             this.data.set('solvedRiddle', true);
             textEntry.visible = false;
-            this.key = this.add.image(250, 400, 'Key1');
-            this.key.setScale(0.1,0.1);
+            key.visible = true;
            }
         else if(textEntry.text.length > 3 || event.keyCode === 13){ //enter
             textEntry.text = '';

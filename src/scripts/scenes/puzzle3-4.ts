@@ -18,49 +18,49 @@ export default class Game extends Phaser.Scene {
         
 
     
-          const puzzle3 = this.add.rectangle(
+          const puzzle7 = this.add.rectangle(
             this.cameras.main.width / 2,
             this.cameras.main.height / 2,
             660,
             100,
             
           );
-          puzzle3.x = 630;
-          puzzle3.y = 520;
+          puzzle7.x = 630;
+          puzzle7.y = 520;
           
-          puzzle3.setInteractive();
-          puzzle3.on('pointerup', () => {
-            this.scene.start('puzzleThree');
+          puzzle7.setInteractive();
+          puzzle7.on('pointerup', () => {
+            this.scene.start('puzzleSeven');
           });
           
-          puzzle3.on('pointerover', () => {
+          puzzle7.on('pointerover', () => {
             image.setTexture('lobby3-4Cannoe');
          })
    
-         puzzle3.on('pointerout', () => { 
+         puzzle7.on('pointerout', () => { 
            image.setTexture('lobby3-4');
          })
           
-          const puzzle7 = this.add.rectangle(
+          const puzzle3 = this.add.rectangle(
             this.cameras.main.width / 2,
             this.cameras.main.height / 2,
             285,
             215,
             
           );
-          puzzle7.x = 1020;
-          puzzle7.y = 350;
+          puzzle3.x = 1020;
+          puzzle3.y = 350;
          
-          puzzle7.setInteractive();
-          puzzle7.on('pointerup', () => {
-            this.scene.start('puzzleSeven');
+          puzzle3.setInteractive();
+          puzzle3.on('pointerup', () => {
+            this.scene.start('puzzleThree');
           });
 
-          puzzle7.on('pointerover', () => {
+          puzzle3.on('pointerover', () => {
             image.setTexture('lobby3-4Antlers');
          })
    
-         puzzle7.on('pointerout', () => { 
+         puzzle3.on('pointerout', () => { 
            image.setTexture('lobby3-4');
          })
 

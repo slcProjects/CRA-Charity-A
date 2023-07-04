@@ -28,6 +28,7 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('FirePit','./assets/img/FirePit.png')
     this.load.image('leftArrowHint','./assets/img/leftArrowHint.png')
     this.load.image('rightArrowHint','./assets/img/rightArrowHint.png')
+    this.load.image('closeButton','./assets/img/closeButton.png');
     this.load.image('closeButton','./assets/img/closeButton.png')
     this.load.image('hintsButton','/assets/img/hintsButton.png')
     this.load.image('StoryImage','/assets/img/StoryImage.png')
