@@ -39,7 +39,7 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
             145, 
             
           );
-          puzzle1.setStrokeStyle(2, 0x000000);
+         
           puzzle1.x = 780;
           puzzle1.y = 435;
 
@@ -64,7 +64,7 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
             290
             
           );
-          puzzle2.setStrokeStyle(2, 0x000000);
+          
           puzzle2.x = 370; //370
           puzzle2.y = 350; //350
 

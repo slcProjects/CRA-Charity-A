@@ -6,36 +6,56 @@ export default class Game extends Phaser.Scene {
 
     create()
     {
-     
+      const image = this.add.image(0,0,'lobby3-4')
+      image.setOrigin(0.5);
+      image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
+      image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
     
           const puzzle3 = this.add.rectangle(
             this.cameras.main.width / 2,
             this.cameras.main.height / 2,
-            200,
-            200,
-            0x000000
+            660,
+            100,
+            
           );
-          puzzle3.x = 350;
-          puzzle3.y = 350;
-
+          puzzle3.x = 630;
+          puzzle3.y = 520;
+          
           puzzle3.setInteractive();
           puzzle3.on('pointerup', () => {
             this.scene.start('puzzleThree');
           });
           
+          puzzle3.on('pointerover', () => {
+            image.setTexture('lobby3-4Cannoe');
+         })
+   
+         puzzle3.on('pointerout', () => { 
+           image.setTexture('lobby3-4');
+         })
+          
           const puzzle7 = this.add.rectangle(
             this.cameras.main.width / 2,
             this.cameras.main.height / 2,
-            200,
-            200,
-            0x000000
+            285,
+            215,
+            
           );
-          puzzle7.x = 900;
+          puzzle7.x = 1020;
           puzzle7.y = 350;
+         
           puzzle7.setInteractive();
           puzzle7.on('pointerup', () => {
             this.scene.start('puzzleSeven');
           });
+
+          puzzle7.on('pointerover', () => {
+            image.setTexture('lobby3-4Antlers');
+         })
+   
+         puzzle7.on('pointerout', () => { 
+           image.setTexture('lobby3-4');
+         })
 
           
     
