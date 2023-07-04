@@ -22,7 +22,7 @@ constructor() {
       const hintScene = createHintScene.call(this, hints);
     hintScene.call(this);
 
-      let keyHolder = this.add.text(100, 70, 'The exit has opened', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
+      let keyHolder = this.add.text(100, 70, 'The puzzle is complete', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
       keyHolder.visible = false;
 
       this.add.text(400, 70, 'Finish Puzzle', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'}).setInteractive().on('pointerdown', ()=> {
