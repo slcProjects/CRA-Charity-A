@@ -22,7 +22,7 @@ export default class Game extends Phaser.Scene {
 
     const table = this.add.image(400, 480, 'table');
     const key5 = this.add.image(783, 500, 'Key5');
-    key5.setScale(0.5);
+    key5.setScale(0.3);
     key5.setAlpha(0);
 
     const createBox = (x: number, y: number) => {

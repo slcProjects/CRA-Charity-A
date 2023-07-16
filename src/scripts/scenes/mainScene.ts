@@ -1,6 +1,6 @@
 
-
 export default class MainScene extends Phaser.Scene {
+ 
 
   constructor() {
     super({ key: 'MainScene' })
@@ -13,7 +13,7 @@ export default class MainScene extends Phaser.Scene {
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
     
-    
+      this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
 
     /*
     For the Background Image, Use to scale it to fit the screen.
@@ -34,4 +34,12 @@ export default class MainScene extends Phaser.Scene {
   update() {
    
   }
+
+  goToOptionsScene() {
+    this.scene.pause();
+    this.scene.start('Options', { fromScene: this.scene.key });
+    console.log({fromScene: this.scene.key})
+  }
+
+  
 }
