@@ -38,7 +38,10 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('KitchenH','/assets/img/KitchenH.png');
     this.load.image('lobby3-4Cannoe','/assets/img/Lobby3-4Cannoe.png')
     this.load.image('lobby3-4Antlers','/assets/img/Lobby3-4Antlers.png')
-    
+    this.load.image('moose','/assets/img/Moose.png')
+    this.load.image('canoe','/assets/img/Canoe.png')
+    this.load.image('flag','/assets/img/flag.png')
+
 
   }
 

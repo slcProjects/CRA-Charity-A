@@ -8,6 +8,11 @@ constructor() {
      this.key = false;
   }
   create(){
+    const image = this.add.image(0,0,'moose')
+    image.setOrigin(0.5);
+    image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
+    image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
+
     var hints = [
         "Hint 1: This is the first hint.",
         "Hint 2: This is the second hint.",
@@ -21,16 +26,16 @@ constructor() {
     this.data.set('openedAntlers', false);
     this.data.set('solvedRiddle', false);
     }
-    const Antlers = this.add.image(600,100,'Continue').setInteractive({ useHandCursor: true }); // this will be the moose antlers in game 
-    var riddle = this.add.image(400, 300, 'Riddle1').setScale(.5);
-    let key = this.add.image(850, 400, 'Key1').setScale(0.1,0.1).setInteractive().setVisible(false);
-    var textEntry = this.add.text(200, 500, 'Start typing...', { font: '32px Courier', color : 'black'});
+    const Antlers = this.add.rectangle(420,200,50,50).setInteractive({ useHandCursor: true }); // this will be the moose antlers in game
+    var riddle = this.add.image(900, 300, 'Riddle1').setScale(.5);
+    let key = this.add.image(850, 500, 'Key1').setScale(0.1,0.1).setInteractive().setVisible(false);
+    var textEntry = this.add.text(850, 500, 'Start typing...', { font: '32px Courier', color : 'black'});
     textEntry.visible = false;
 
     if(this.data.get('openedAntlers')){ // used for saving progress after switching scenes
         console.log("opened key");
         riddle.destroy();
-        riddle = this.add.image(400, 300, 'Riddle2').setScale(.5);
+        riddle = this.add.image(900, 300, 'Riddle2').setScale(.5);
         textEntry.visible = true;
         Antlers.disableInteractive();
         Antlers.setAlpha(0.5);
@@ -57,7 +62,7 @@ constructor() {
            Antlers.setAlpha(0.5);
            this.data.set('openedAntlers', true);
            riddle.destroy();
-           riddle = this.add.image(400, 300, 'Riddle2').setScale(.5);
+           riddle = this.add.image(900, 300, 'Riddle2').setScale(.5);
            textEntry.visible = true;
         }
     });
