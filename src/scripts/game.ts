@@ -9,10 +9,8 @@ import PuzzleThree from './scenes/puzzleThree'
 import PuzzleThreeFour from './scenes/puzzle3-4'
 import PuzzleFiveSix from './scenes/puzzle5-6'
 import PuzzleFive from './scenes/puzzleFive'
-
-
 import PuzzleSeven from './scenes/puzzleSeven'
-
+import EndScene from './scenes/EndScene'
 
 
 
@@ -32,7 +30,8 @@ const config = {
   },
   scene: [PreloadScene, MainScene, MainGame, StoryScene,
 
-          PuzzleOne, PuzzleTwo, PuzzleThree, PuzzleThreeFour, PuzzleFiveSix, PuzzleFive, PuzzleSeven],
+          PuzzleOne, PuzzleTwo, PuzzleThree, PuzzleThreeFour, 
+          PuzzleFiveSix, PuzzleFive, PuzzleSeven, EndScene],
 
 
   physics: {
