@@ -17,11 +17,10 @@ export default class Game extends Phaser.Scene {
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
         const content = [
-            'In the remote Canadian wilderness, you stand before an old winter cabin,',
-            'its mystique beckoning you to explore its secrets. As you step inside, ',
-            'seeking adventure, you unwittingly trigger a mechanism that seals you inside, ',
-            'leaving you trapped within its icy embrace. With the fire slowly dwindling, ',
-            'casting flickering shadows across the room, you realize that time is against you.'
+            'you have escaped the old winter cabin in the Canadian wilderness,',
+            'you explored its secrets. As you step outside onto the snow, ',
+            'you feel a sense of accomplishment as you have escaped the baffling house.',
+            'Now you are on a journey to tell your friends about what has occured.',
             //Possibly Changed, the story
         ];
           var text = this.add.text(this.cameras.main.centerX -135, this.cameras.main.centerY -330, content, textStyle);
