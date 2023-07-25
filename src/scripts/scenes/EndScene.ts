@@ -4,7 +4,7 @@ import {textStyle} from '../objects/fpsStyle';
 export default class Game extends Phaser.Scene {
 
     constructor() {
-      super({ key: 'storyScene' })
+      super({ key: 'EndScene' })
 
      
     }
@@ -29,7 +29,7 @@ export default class Game extends Phaser.Scene {
           text.setLineSpacing(17);
           text.setScale(.75);
 
-        const Continue = this.add.image(1165,680,'Continue').setInteractive();
+        const Continue = this.add.image(1000,680,'Continue').setInteractive();
 
         Continue.on('pointerdown', this.buttonClicked, this);
   
