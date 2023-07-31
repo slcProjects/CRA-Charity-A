@@ -1,3 +1,5 @@
+import GlobalTimer from '../objects/globalTimer';
+
 import { createHintScene } from '../objects/hints';
 
 export default class Puzzle2 extends Phaser.Scene {
@@ -25,7 +27,7 @@ export default class Puzzle2 extends Phaser.Scene {
 
     const hintScene = createHintScene.call(this, hints);
     hintScene.call(this);
-
+    this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
     // Add the 'Return' button
     const Return: Phaser.GameObjects.Image = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', () => {
       this.scene.start('MainGame');
@@ -117,5 +119,15 @@ export default class Puzzle2 extends Phaser.Scene {
       });
       this.secretCompartment.setScale(0.5);
     }
+  }
+  update(time, delta) {
+    // Call the update function of GlobalTimer to update the timer
+    GlobalTimer.update(time);
+  }
+  
+  goToOptionsScene() {
+    this.scene.pause();
+    this.scene.start('Options', { fromScene: this.scene.key });
+    console.log({fromScene: this.scene.key})
   }
 }

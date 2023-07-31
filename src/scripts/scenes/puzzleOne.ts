@@ -1,3 +1,5 @@
+import GlobalTimer from '../objects/globalTimer';
+
 import { createHintScene } from '../objects/hints'
 export default class Puzzle1 extends Phaser.Scene {
   private code ;
@@ -52,7 +54,7 @@ export default class Puzzle1 extends Phaser.Scene {
 
         
       
-
+        this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
       
     
      
@@ -81,7 +83,10 @@ export default class Puzzle1 extends Phaser.Scene {
       }
      
   }
-
+  update(time, delta) {
+    // Call the update function of GlobalTimer to update the timer
+    GlobalTimer.update(time);
+  }
   disableButton(button) {
     button.disableInteractive();
     button.setAlpha(0.5);
@@ -101,6 +106,11 @@ resetButtons() {
     this.buttonsPressed = 0;
     this.code = '';
     this.key.setAlpha(0);
+}
+goToOptionsScene() {
+  this.scene.pause();
+  this.scene.start('Options', { fromScene: this.scene.key });
+  console.log({fromScene: this.scene.key})
 }
     
    

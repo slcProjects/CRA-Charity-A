@@ -1,3 +1,5 @@
+import GlobalTimer from '../objects/globalTimer';
+
 import { createHintScene } from '../objects/hints'
 export default class Puzzle3 extends Phaser.Scene {
     private gotKey;
@@ -26,7 +28,8 @@ constructor() {
     let key = this.add.image(850, 400, 'Key1').setScale(0.1,0.1).setInteractive().setVisible(false);
     var textEntry = this.add.text(200, 500, 'Start typing...', { font: '32px Courier', color : 'black'});
     textEntry.visible = false;
-
+    this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+    
     if(this.data.get('openedAntlers')){ // used for saving progress after switching scenes
         console.log("opened key");
         riddle.destroy();
@@ -93,5 +96,14 @@ constructor() {
     var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
         this.scene.start('puzzle3-4');//This is meant to change pages
     })
+  }
+  update(time, delta) {
+    // Call the update function of GlobalTimer to update the timer
+    GlobalTimer.update(time);
+  }
+  goToOptionsScene() {
+    this.scene.pause();
+    this.scene.start('Options', { fromScene: this.scene.key });
+    console.log({fromScene: this.scene.key})
   }
 }
