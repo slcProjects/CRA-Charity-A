@@ -52,7 +52,20 @@ export default class Puzzle1 extends Phaser.Scene {
   
         });
 
-        
+        var Paper = this.add.image(1150, 500, 'Paper').setInteractive().on('pointerdown', ()=> {
+          this.scene.start('paperScene');//This is meant to change pages
+  
+        });
+  
+        Paper.setScale(0.35);
+  
+        Paper.on('pointerover', () => {
+          Paper.setTexture('PaperH');
+       })
+  
+       Paper.on('pointerout', () => { 
+        Paper.setTexture('Paper');
+       })
       
         this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
       

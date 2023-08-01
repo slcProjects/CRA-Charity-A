@@ -39,7 +39,10 @@ export default class Game extends Phaser.Scene {
         .setData('id', null)
         .setFillStyle(0xffffff, 0); // Set the fill color to white (0xffffff) and fillAlpha to 0 (fully transparent)
     };
+    var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+      this.scene.start('puzzle5-6');//This is meant to change pages
 
+    });
     const riddleBottleB = "Bottle B: 'Lighter than C.'";
     const riddleBottleC = "Bottle C: 'Heavier than A.'";
     const riddleBottleA = "Bottle A: 'Heavier than B.'";

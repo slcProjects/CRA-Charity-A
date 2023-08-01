@@ -12,7 +12,7 @@ import PuzzleFiveSix from './scenes/puzzle5-6';
 import PuzzleFive from './scenes/puzzleFive';
 import Options from './scenes/options';
 import PuzzleSeven from './scenes/puzzleSeven';
-
+import Paper from './scenes/Paper';
 const DEFAULT_WIDTH = 1280;
 const DEFAULT_HEIGHT = 720;
 
@@ -39,6 +39,7 @@ const config: Phaser.Types.Core.GameConfig = {
     PuzzleFive,
     PuzzleSeven,
     Options,
+    Paper,
   ],
   physics: {
     default: 'arcade',
