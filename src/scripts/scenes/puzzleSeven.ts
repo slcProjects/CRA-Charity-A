@@ -19,9 +19,9 @@ constructor() {
       }
 
       var hints = [
-        "Hint 1: This is the first hint.",
-        "Hint 2: This is the second hint.",
-        "Hint 3: This is the third hint."
+        "Hint 1: Image of a canadian flag with writing",
+        "Hint 2: Try aligning the text and symbols",
+        "Hint 3: They will snap on background if you are close enough"
       ];
 
       const hintScene = createHintScene.call(this, hints);

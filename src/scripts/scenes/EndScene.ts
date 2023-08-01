@@ -21,6 +21,11 @@ export default class Game extends Phaser.Scene {
             'you explored its secrets. As you step outside onto the snow, ',
             'you feel a sense of accomplishment as you have escaped the baffling house.',
             'Now you are on a journey to tell your friends about what has occured.',
+            '                                                             ',
+            '                                                             ',
+            '                                                             ',
+            '                                                             ',
+            'Created by Marco De Melo and Riley Lawrence-Nebesnuik'
             //Possibly Changed, the story
         ];
           var text = this.add.text(this.cameras.main.centerX -135, this.cameras.main.centerY -330, content, textStyle);

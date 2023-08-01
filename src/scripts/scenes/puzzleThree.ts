@@ -14,9 +14,9 @@ constructor() {
     image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
 
     var hints = [
-        "Hint 1: This is the first hint.",
-        "Hint 2: This is the second hint.",
-        "Hint 3: This is the third hint."
+        "Hint 1: The Key is in a diffrent room",
+        "Hint 2: Often percived as valuable",
+        "Hint 3: Used to make jewelry"
       ];
 
       const hintScene = createHintScene.call(this, hints);
