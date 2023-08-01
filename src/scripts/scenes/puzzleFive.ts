@@ -85,7 +85,7 @@ export default class Game extends Phaser.Scene {
 
       if (currentOrder === correctOrder) {
         console.log('Unlock the next stage!');
-        key5.setAlpha(1);
+        this.scene.start('EndScene');
       } else {
         console.log('Incorrect order, try again!');
       }

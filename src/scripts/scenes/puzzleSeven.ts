@@ -8,6 +8,11 @@ constructor() {
     super({ key: 'puzzleSeven' })
   }
   create(){
+    const image = this.add.image(0,0,'canoe')
+    image.setOrigin(0.5);
+    image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
+    image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
+
     var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
         this.scene.start('puzzle3-4');//This is meant to change pages
       });
@@ -16,32 +21,32 @@ constructor() {
       }
 
       var hints = [
-        "Hint 1: This is the first hint.",
-        "Hint 2: This is the second hint.",
-        "Hint 3: This is the third hint."
+        "Hint 1: Image of a canadian flag with writing",
+        "Hint 2: Try aligning the text and symbols",
+        "Hint 3: They will snap on background if you are close enough"
       ];
 
       const hintScene = createHintScene.call(this, hints);
     hintScene.call(this);
 
-      let keyHolder = this.add.text(100, 70, 'The puzzle is complete', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'});
-      keyHolder.visible = false;
-
       this.add.text(400, 70, 'Finish Puzzle', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'}).setInteractive().on('pointerdown', ()=> {
         this.data.set('openedExit', true);
-        keyHolder.visible = true;
+
         for(let index = 0; index < images.length; index++)
           {
-                images.at(index)?.setY(517);
-                images.at(index)?.setX(1018);
+                images.at(index)?.setY(298);
+                images.at(index)?.setX(1068);
                 images.at(index)!.disableInteractive();
           }
 
       });
-      
-      this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+      this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
+
       var scale = .6;
       var pieceSize = 128 * scale;
+
+      var scale = .4;
+      var pieceSize = 45;
       var offset = 5;
       const outlines : GameObjects.Rectangle[] = [];
       const images : GameObjects.Image[] = [];
@@ -49,15 +54,15 @@ constructor() {
       for(let x = 0; x < 4; x++){
         for(let y = 0; y < 4; y++){
           var  outline = this.add.rectangle(
-            800+ y*pieceSize,
-            300+ x*pieceSize,
+            1000+ y*pieceSize,
+            230+ x*pieceSize,
             pieceSize,
             pieceSize,
             0x808080
           );
           var value = Phaser.Math.Between(-150, 150);
           outlines.push(outline);
-          let image = this.add.image(400 + value, 537 + value, 'MainMenu').
+          let image = this.add.image(400 + value, 537 + value, 'flag').
                       setCrop(pieceSize * y, pieceSize * x, pieceSize, pieceSize).setDepth(1).
                       setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x,pieceSize,pieceSize), Phaser.Geom.Rectangle.Contains);
           
@@ -67,11 +72,11 @@ constructor() {
 
         if(this.data.get('openedExit')){
 
-          keyHolder.visible = true;
+  
           for(let index = 0; index < images.length; index++)
           {
-                images.at(index)?.setY(517);
-                images.at(index)?.setX(1018);
+                images.at(index)?.setY(298);
+                images.at(index)?.setX(1068);
                 images.at(index)!.disableInteractive();
           }
       }
@@ -89,18 +94,18 @@ constructor() {
           let count = 0;
           for(let index = 0; index < images.length; index++)
           {
-            if((images.at(index)!.x >= 1018 - offset && images.at(index)!.x <= 1018 + offset) &&
-               (images.at(index)!.y >= 517 - offset && images.at(index)!.y <= 517 + offset)){
+            if((images.at(index)!.x >= 1068 - offset && images.at(index)!.x <= 1068 + offset) &&
+               (images.at(index)!.y >= 298 - offset && images.at(index)!.y <= 298 + offset)){
 
-                images.at(index)?.setY(517);
-                images.at(index)?.setX(1018);
+                images.at(index)?.setY(298);
+                images.at(index)?.setX(1068);
                 images.at(index)!.disableInteractive();
                 count++;
                }
           }
           if(count >=16){
             this.data.set('openedExit', true);
-            keyHolder.visible = true;
+    
           }
             
         });
