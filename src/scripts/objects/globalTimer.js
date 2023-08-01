@@ -3,7 +3,7 @@ let lastTime = 0; // Keep track of the last update time
 let isRunning = false; // To check if the timer is running
 
 function update(time) {
-  if (isRunning) {
+  if (isRunning === true) {
     const currentTime = time;
     const deltaTime = (currentTime - lastTime) / 1000; // Convert delta to seconds
     timer += deltaTime;
