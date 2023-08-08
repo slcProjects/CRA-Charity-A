@@ -34,13 +34,24 @@ export default class Puzzle2 extends Phaser.Scene {
       this.scene.start('MainGame');
     });
 
+    this.showSymbols = this.scene.get('puzzleOne').data.get('fireKey');
+
     if (this.data.get('antler') == null) { // initial false
       this.data.set('antler', false);
     }
     //Change antler to be with key2 from the second puzzle
+    var Paper = this.add.image(1150, 500, 'Paper').setInteractive().on('pointerdown', ()=> {
+      this.scene.start('paperIScene');//This is meant to change pages
 
+    });
+
+    Paper.setScale(0.35);
+
+    Paper.on('pointerover', () => {
+      Paper.setTexture('PaperH');
+   })
    Paper.on('pointerout', () => { 
-    Paper.setTexture('Paper');
+   Paper.setTexture('Paper');
    })
     // Create the book symbols
     const symbols: string[] = ['△', 'C', '8', '●', 'A', '4'];
