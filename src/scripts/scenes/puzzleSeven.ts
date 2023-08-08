@@ -66,7 +66,8 @@ constructor() {
           outlines.push(outline);
           let image = this.add.image(400 + value, 537 + value, 'flag').
                       setCrop(pieceSize * y, pieceSize * x, pieceSize, pieceSize).setDepth(1).
-                      setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x,pieceSize,pieceSize), Phaser.Geom.Rectangle.Contains);
+                      setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x,pieceSize,pieceSize), Phaser.Geom.Rectangle.Contains).
+                      setInteractive({ useHandCursor: true });
           
           this.input.setDraggable(image, true);
           if(!this.gotKey){

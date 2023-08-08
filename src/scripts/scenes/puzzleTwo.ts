@@ -123,7 +123,7 @@ export default class Puzzle2 extends Phaser.Scene {
   private revealSecretCompartment() {
     if (!this.secretCompartment) {
       this.secretCompartment = this.add.image(1000, 100, 'Key2');
-      this.secretCompartment.setInteractive();
+      this.secretCompartment.setInteractive({ useHandCursor: true });
       this.secretCompartment.on('pointerdown', () => {
         this.secretCompartment?.destroy();
         this.data.set('antler', true);
