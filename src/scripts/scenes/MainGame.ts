@@ -1,6 +1,11 @@
+
+import StartTimer from '../objects/globalTimer';
 export default class Game extends Phaser.Scene {
+
+ private counter: number = 0;
     constructor() {
         super({ key: 'MainGame' })
+        
       }
 
 /*pointerup: This event is triggered when a pointer (mouse button or touch) is released after being pressed down on
@@ -15,12 +20,24 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
 */
     create()
     {
-
+      
+      if (this.counter === 0)
+      {
+        StartTimer.startTimer();
+        this.counter +=1;
+      }
+      
+      else {
+        console.log("U CAN'T ENTER")
+      }
+    
+  
       const image = this.add.image(0,0,'lobby')
       image.setOrigin(0.5);
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
-      
+      this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+
       if (this.data.get('antler') == null){ // inital false
         this.data.set('antler', false)
         }
@@ -118,5 +135,17 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
            right.setTexture('RightArrow');
          })
     
+    }
+  
+  
+   
+    update(time, delta) {
+      // Call the update function of GlobalTimer to update the timer
+      StartTimer.update(time);
+    }
+    goToOptionsScene() {
+      this.scene.pause();
+      this.scene.start('Options', { fromScene: this.scene.key });
+      console.log({fromScene: this.scene.key})
     }
 }

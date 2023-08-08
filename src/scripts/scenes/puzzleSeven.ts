@@ -1,3 +1,5 @@
+import GlobalTimer from '../objects/globalTimer';
+
 import { GameObjects } from "phaser";
 import { createHintScene } from '../objects/hints'
 export default class Puzzle7 extends Phaser.Scene {
@@ -40,7 +42,10 @@ constructor() {
           }
 
       });
-      
+      this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
+
+      var scale = .6;
+      var pieceSize = 128 * scale;
 
       var scale = .4;
       var pieceSize = 45;
@@ -109,5 +114,15 @@ constructor() {
             
         });
         
+  }
+
+  update(time, delta) {
+    // Call the update function of GlobalTimer to update the timer
+    GlobalTimer.update(time);
+  }
+  goToOptionsScene() {
+    this.scene.pause();
+    this.scene.start('Options', { fromScene: this.scene.key });
+    console.log({fromScene: this.scene.key})
   }
 }

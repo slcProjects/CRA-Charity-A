@@ -21,7 +21,6 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('bottleB','./assets/img/bottleB.png')
     this.load.image('bottleC','./assets/img/bottleC.png')
     this.load.image('table','./assets/img/Table.png')
-    this.load.image('Key5','./assets/img/northKey.png')
     this.load.image('lobby','./assets/img/Lobby.png')
     this.load.image('lobbyH','./assets/img/LobbyHighlight.png')
     this.load.image('lobbyHF','./assets/img/LobbyHF.png')
@@ -36,8 +35,13 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('lobby3-4','/assets/img/Lobby3-4.png')
     this.load.image('Kitchen','/assets/img/Kitchen.png');
     this.load.image('KitchenH','/assets/img/KitchenH.png');
+    this.load.image('KitchenM','/assets/img/KitchenM.png');
     this.load.image('lobby3-4Cannoe','/assets/img/Lobby3-4Cannoe.png')
     this.load.image('lobby3-4Antlers','/assets/img/Lobby3-4Antlers.png')
+    this.load.image('Options', '/assets/img/options.png')
+    this.load.image('FinalKey','./assets/img/FinalKey.png')
+    this.load.image('Paper','./assets/img/Paper.png')
+    this.load.image('PaperH','./assets/img/PaperH.png')
     this.load.image('moose','/assets/img/Moose.png')
     this.load.image('canoe','/assets/img/Canoe.png')
     this.load.image('flag','/assets/img/flag.png')
@@ -46,6 +50,8 @@ export default class PreloadScene extends Phaser.Scene {
   }
 
   create() {
+   
+    
     this.scene.start('MainScene')
 
     /**

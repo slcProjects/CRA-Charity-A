@@ -1,3 +1,5 @@
+import GlobalTimer from '../objects/globalTimer';
+
 export default class Game extends Phaser.Scene {
     constructor() {
         super({ key: 'puzzle3-4' })
@@ -10,11 +12,8 @@ export default class Game extends Phaser.Scene {
       image.setOrigin(0.5);
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
-        var left = this.add.image(50, 360, 'LeftArrow').setInteractive().on('pointerdown', ()=> {
-            this.scene.start('MainGame');//This is meant to change pages
-    
-          });
-
+        
+      this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
         
 
     
@@ -81,5 +80,14 @@ export default class Game extends Phaser.Scene {
            right.setTexture('RightArrow');
          })
     
+    }
+    update(time, delta) {
+      // Call the update function of GlobalTimer to update the timer
+      GlobalTimer.update(time);
+    }
+    goToOptionsScene() {
+      this.scene.pause();
+      this.scene.start('Options', { fromScene: this.scene.key });
+      console.log({fromScene: this.scene.key})
     }
 }

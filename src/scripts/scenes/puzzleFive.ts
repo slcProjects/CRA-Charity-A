@@ -1,3 +1,5 @@
+import GlobalTimer from '../objects/globalTimer';
+import { riddleStyle } from '../objects/fpsStyle';
 import { createHintScene } from '../objects/hints'
 export default class Game extends Phaser.Scene {
   private showBottles;
@@ -21,23 +23,45 @@ export default class Game extends Phaser.Scene {
         this.scene.start('puzzle5-6'); // This is meant to change pages
       });
 
-    const table = this.add.image(400, 480, 'table');
-    const key5 = this.add.image(783, 500, 'Key5');
-    key5.setScale(0.5);
+      const image = this.add.image(0,0,'KitchenM')
+      image.setOrigin(0.5);
+      image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
+      image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
+
+    const key5 = this.add.image(783, 500, 'FinalKey');
+    key5.setScale(0.07);
     key5.setAlpha(0);
     this.showBottles = this.scene.get('puzzleSeven').data.get('solvedJigsaw'); // gets data from other scene
 
     const createBox = (x: number, y: number) => {
       return this.add
-        .rectangle(x, y, 100, 100, 0xffffff)
-        .setStrokeStyle(2, 0x000000)
+        .rectangle(x, y, 100, 100, 0x000000) // Black color (0x000000) for the stroke
+        .setStrokeStyle(2, 0x000000) // Black color (0x000000) for the stroke
         .setInteractive()
-        .setData('id', null) as Phaser.GameObjects.Rectangle & { id: string | null };
+        .setData('id', null)
+        .setFillStyle(0xffffff, 0); // Set the fill color to white (0xffffff) and fillAlpha to 0 (fully transparent)
     };
+    var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+      this.scene.start('puzzle5-6');//This is meant to change pages
 
-    const box1 = createBox(250, 340);
-    const box2 = createBox(400, 340);
-    const box3 = createBox(550, 340);
+    });
+    const riddleBottleB = "Bottle B: 'Lighter than C.'";
+    const riddleBottleC = "Bottle C: 'Heavier than A.'";
+    const riddleBottleA = "Bottle A: 'Heavier than B.'";
+
+    const riddleText = "Arrange the bottles from heaviest to lightest"
+
+    // Create text objects for each riddle using riddleStyle
+    const textBottleB = this.add.text(750, 500, riddleBottleB, riddleStyle);
+    const textBottleC = this.add.text(750, 550, riddleBottleC, riddleStyle);
+    const textBottleA = this.add.text(750, 600, riddleBottleA, riddleStyle);
+    const riddleTextBox = this.add.text(770, 430, riddleText, riddleStyle)
+
+
+    this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+    const box1 = createBox(600, 175);
+    const box2 = createBox(800, 175);
+    const box3 = createBox(1000, 175);
 
     const boxes = [box1, box2, box3];
     const droppedBottles: (Phaser.GameObjects.Image | undefined)[] = [undefined, undefined, undefined];
@@ -74,9 +98,9 @@ export default class Game extends Phaser.Scene {
       }
     };
 
-    const bottleA = this.add.image(150, 450, 'bottleA').setScale(0.16).setData('id', 'A');
-    const bottleB = this.add.image(300, 450, 'bottleB').setScale(0.16).setData('id', 'B');
-    const bottleC = this.add.image(450, 450, 'bottleC').setScale(0.16).setData('id', 'C');
+    const bottleA = this.add.image(150, 345, 'bottleA').setScale(0.15).setData('id', 'A');
+    const bottleB = this.add.image(300, 345, 'bottleB').setScale(0.15).setData('id', 'B');
+    const bottleC = this.add.image(450, 345, 'bottleC').setScale(0.15).setData('id', 'C');
 
     const bottles = [bottleA, bottleB, bottleC];
 
@@ -132,9 +156,14 @@ export default class Game extends Phaser.Scene {
         updateConsoleLogs();
         checkOrder();
       });
+      
     });
+    
   }
-
+  update(time, delta) {
+    // Call the update function of GlobalTimer to update the timer
+    GlobalTimer.update(time);
+  }
   getOriginalBottlePosition(index: number) {
     const startX = 150;
     const spacingX = 150;
@@ -144,5 +173,10 @@ export default class Game extends Phaser.Scene {
     const x = startX + index * spacingX + offsetX;
     const y = startY;
     return new Phaser.Math.Vector2(x, y);
+  }
+  goToOptionsScene() {
+    this.scene.pause();
+    this.scene.start('Options', { fromScene: this.scene.key });
+    console.log({fromScene: this.scene.key})
   }
 }

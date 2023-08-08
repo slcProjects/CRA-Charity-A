@@ -12,7 +12,7 @@ export default class Game extends Phaser.Scene {
     create()
     {
       const image = this.add.image(0, 0, 'StoryImage');
-       
+      this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
       image.setOrigin(0.5);
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
@@ -24,11 +24,7 @@ export default class Game extends Phaser.Scene {
             'casting flickering shadows across the room, you realize that time is against you.'
             //Possibly Changed, the story
         ];
-          var text = this.add.text(this.cameras.main.centerX -135, this.cameras.main.centerY -330, content, textStyle);
-          text.setColor('fad643');
-          text.setLineSpacing(17);
-          text.setScale(.75);
-
+          var text = this.add.text(this.cameras.main.centerX - 500, this.cameras.main.centerY - 100, content, textStyle);
         const Continue = this.add.image(1165,680,'Continue').setInteractive();
 
         Continue.on('pointerdown', this.buttonClicked, this);
@@ -36,7 +32,11 @@ export default class Game extends Phaser.Scene {
 
           
     }
-    
+    goToOptionsScene() {
+      this.scene.pause();
+      this.scene.start('Options', { fromScene: this.scene.key });
+      console.log({fromScene: this.scene.key})
+    }
     buttonClicked()
     {
       this.scene.start('MainGame');
