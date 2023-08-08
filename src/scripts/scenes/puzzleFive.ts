@@ -2,6 +2,7 @@ import GlobalTimer from '../objects/globalTimer';
 import { riddleStyle } from '../objects/fpsStyle';
 import { createHintScene } from '../objects/hints'
 export default class Game extends Phaser.Scene {
+  private showBottles;
   constructor() {
     super({ key: 'puzzleFive' });
   }
@@ -30,6 +31,7 @@ export default class Game extends Phaser.Scene {
     const key5 = this.add.image(783, 500, 'FinalKey');
     key5.setScale(0.07);
     key5.setAlpha(0);
+    this.showBottles = this.scene.get('puzzleSeven').data.get('solvedJigsaw'); // gets data from other scene
 
     const createBox = (x: number, y: number) => {
       return this.add
@@ -86,6 +88,11 @@ export default class Game extends Phaser.Scene {
       if (currentOrder === correctOrder) {
         console.log('Unlock the next stage!');
         this.scene.start('EndScene');
+        this.scene.get('puzzleSeven').data.set('solvedJigsaw',false); // sets data from other scene
+        this.scene.get('puzzleThree').data.set('openedAntlers',false);
+        this.scene.get('puzzleThree').data.set('solvedRiddle',false);
+        this.scene.get('puzzleTwo').data.set('antler',false);
+        this.scene.get('puzzleOne').data.set('fireKey',false);
       } else {
         console.log('Incorrect order, try again!');
       }
@@ -98,6 +105,9 @@ export default class Game extends Phaser.Scene {
     const bottles = [bottleA, bottleB, bottleC];
 
     bottles.forEach((bottle, index) => {
+      if(!this.showBottles){
+         bottle.setAlpha(0);
+      }
       bottle.setInteractive({ draggable: true });
       this.input.setDraggable(bottle);
 
