@@ -1,19 +1,29 @@
 let timer = 0;
-let lastTime = 0; // Keep track of the last update time
-let isRunning = false; // To check if the timer is running
+let lastTime = 0;
+let isRunning = false;
 
 function update(time) {
   if (isRunning === true) {
-    const currentTime = time;
-    const deltaTime = (currentTime - lastTime) / 1000; // Convert delta to seconds
+    if (lastTime === 0) {
+      lastTime = time; // Set the lastTime to the current time when starting the timer
+    }
+    const deltaTime = (time - lastTime) / 1000;
     timer += deltaTime;
-    lastTime = currentTime;
-    console.log("Current Time" + currentTime);
+    lastTime = time;
+    console.log("Current Time: " + time);
+  } else if (isRunning === false) {
+    console.log("It's Off");
   }
 }
 
 function getTimer() {
   return timer;
+}
+
+function resetTimer() {
+  timer = 0;
+  lastTime = 0;
+  isRunning = false; // Ensure the timer is not running after resetting
 }
 
 function formatTime(seconds) {
@@ -22,9 +32,9 @@ function formatTime(seconds) {
   return `${minutes} minutes ${remainingSeconds} seconds`;
 }
 
-// Function to start the timer
 function startTimer() {
+  resetTimer(); // Reset the timer to zero before starting
   isRunning = true;
 }
 
-export default { update, getTimer, formatTime, startTimer };
+export default { update, getTimer, formatTime, startTimer, resetTimer };

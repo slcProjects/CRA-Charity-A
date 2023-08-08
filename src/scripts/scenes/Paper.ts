@@ -1,4 +1,4 @@
-import { textStyle } from '../objects/fpsStyle';
+import { paperStyle } from '../objects/fpsStyle';
 
 export default class Paper extends Phaser.Scene {
 
@@ -9,17 +9,18 @@ export default class Paper extends Phaser.Scene {
     create() {
         // Set the background color to #e7e4d3
         this.cameras.main.setBackgroundColor('#e7e4d3');
-
+        
         const content = [
-            'Blah Blah Blah Blah Blah Blah Blah',
-            'Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah',
-            'Blah Blah Blah Blah Blah Blah Blah',
-            'Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah,',
-            'Blah Blah Blah Blah Blah Blah Blah'
-            // Possibly Changed, the story
+            'There was a family of 5 living in a winter cabin, they liked their simple life,',
+            'falling asleep at 8pm everyday. One day they had a attempted break in,',
+            'everyone was fine but they stole 3 things of importance from them.',
+            'From that day on, they put locks and hid the keys away with puzzles,',
+            'so that no one could steal anything important again.',
+            'In the end the family left on a 9th of May because of the stress of it all.'
+            
         ];
 
-        var text = this.add.text(this.cameras.main.centerX - 500, this.cameras.main.centerY - 100, content, textStyle);
+        var text = this.add.text(this.cameras.main.centerX - 500, this.cameras.main.centerY - 100, content,  paperStyle);
 
         const closeButton = this.add.image(45, 0, 'closeButton');
         closeButton.setOrigin(1, 0);

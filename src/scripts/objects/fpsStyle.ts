@@ -4,6 +4,11 @@ export const textStyle = {
     align: 'center'
   };
 
+  export const paperStyle = {
+    font: 'bold 28px Arial',
+    fill: '#000000', // White color
+    align: 'center'
+  };
   export const riddleStyle = {
     fontFamily: 'Arial',
     fontSize: '24px',
