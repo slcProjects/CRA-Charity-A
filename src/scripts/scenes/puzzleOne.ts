@@ -27,8 +27,9 @@ export default class Puzzle1 extends Phaser.Scene {
       const hintScene = createHintScene.call(this, hints);
     hintScene.call(this);
       this.key = this.add.image(200, 200, 'Key1');
-      this.key.setScale(0.1,0.1)
+      this.key.setScale(0.1,0.1);
       this.key.setAlpha(0); //Hides image
+      this.key.setInteractive({ useHandCursor: true });
         const buttons = [] as Phaser.GameObjects.Text[];
         for (let i = 1; i <= 9; i++) {
            const button = this.add.text(170 + ((i - 1) % 3) * 100, 80 + Math.floor((i - 1) / 3) * 80, i.toString(), { fontFamily: 'Arial', fontSize: '32px', color: '#000000' });
@@ -49,6 +50,16 @@ export default class Puzzle1 extends Phaser.Scene {
           this.scene.start('MainGame');//This is meant to change pages
   
         });
+        this.key.on('pointerdown', ()=> { 
+          this.key.setAlpha(0);
+        });
+
+        if(this.data.get('fireKey') == true)
+        {
+          buttons.forEach((button) => {
+            this.disableButton(button);
+          });
+        }
 
         
       
@@ -70,7 +81,7 @@ export default class Puzzle1 extends Phaser.Scene {
           if(this.code === this.correctCode)
           {
             this.key.setAlpha(1);
-           
+            this.data.set('fireKey', true);
           }
           else{
         

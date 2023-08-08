@@ -1,7 +1,7 @@
 import { GameObjects } from "phaser";
 import { createHintScene } from '../objects/hints'
 export default class Puzzle7 extends Phaser.Scene {
-    
+  private gotKey
 constructor() {
     super({ key: 'puzzleSeven' })
   }
@@ -11,16 +11,18 @@ constructor() {
     image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
     image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
 
+    this.gotKey = this.scene.get('puzzleThree').data.get('solvedRiddle'); // gets data from other scene
+    if(this.data.get('solvedJigsaw') == null){ // sets starting values once when they are nothing
+    this.data.set('solvedJigsaw', false);
+    }
+
     var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
         this.scene.start('puzzle3-4');//This is meant to change pages
       });
-      if(this.data.get('openedExit') == null){
-      this.data.set('openedExit', false);
-      }
 
       var hints = [
         "Hint 1: Image of a canadian flag with writing",
-        "Hint 2: Try aligning the text and symbols",
+        "Hint 2: Try aligning the text and symbols first",
         "Hint 3: They will snap on background if you are close enough"
       ];
 
@@ -28,7 +30,7 @@ constructor() {
     hintScene.call(this);
 
       this.add.text(400, 70, 'Finish Puzzle', {color: '#ff0000', fontStyle: 'bold', backgroundColor: 'black'}).setInteractive().on('pointerdown', ()=> {
-        this.data.set('openedExit', true);
+        this.data.set('solvedJigsaw', true);
 
         for(let index = 0; index < images.length; index++)
           {
@@ -62,10 +64,13 @@ constructor() {
                       setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x,pieceSize,pieceSize), Phaser.Geom.Rectangle.Contains);
           
           this.input.setDraggable(image, true);
+          if(!this.gotKey){
+            image.setAlpha(0);
+          }
           images.push(image);
         }
 
-        if(this.data.get('openedExit')){
+        if(this.data.get('solvedJigsaw')){
 
   
           for(let index = 0; index < images.length; index++)
@@ -99,10 +104,10 @@ constructor() {
                }
           }
           if(count >=16){
-            this.data.set('openedExit', true);
-    
+            this.data.set('solvedJigsaw', true);
           }
             
         });
+        
   }
 }

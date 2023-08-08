@@ -6,6 +6,7 @@ export default class Puzzle2 extends Phaser.Scene {
   private selectedSymbols: number[] = [];
   private correctOrder: number[] = [4, 1, 3, 5, 2, 0];
   private symbolButtonActivated: boolean[] = [];
+  private showSymbols;
 
   constructor() {
     super({ key: 'puzzleTwo' });
@@ -35,6 +36,8 @@ export default class Puzzle2 extends Phaser.Scene {
       this.data.set('antler', false);
     }
     //Change antler to be with key2 from the second puzzle
+    
+    this.showSymbols = this.scene.get('puzzleOne').data.get('fireKey');
 
     // Create the book symbols
     const symbols: string[] = ['△', 'C', '8', '●', 'A', '4'];
@@ -59,6 +62,14 @@ export default class Puzzle2 extends Phaser.Scene {
         symbols[i],
         { font: 'bold 14px Arial', color: '#000000', wordWrap: { width: 60 }, align: 'center',  }
       );
+      if(this.showSymbols)
+      {
+        symbolText.setAlpha(1);
+      }
+      else
+      {
+        symbolText.setAlpha(0);
+      }
       symbolText.setOrigin(0.5);
       if (i === 0) {
         // Apply CSS class to make symbols 1 and 4 larger
