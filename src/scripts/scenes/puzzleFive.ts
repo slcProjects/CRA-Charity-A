@@ -8,9 +8,9 @@ export default class Game extends Phaser.Scene {
 
   create() {
     var hints = [
-      "Hint 1: This is the first hint.",
-      "Hint 2: This is the second hint.",
-      "Hint 3: This is the third hint."
+      "Hint 1: You can drag and drop the bottles.",
+      "Hint 2: Put the Bottles in the boxes.",
+      "Hint 3: Put the Bottles in the correct order."
     ];
 
     const hintScene = createHintScene.call(this, hints);
@@ -157,7 +157,7 @@ export default class Game extends Phaser.Scene {
   getOriginalBottlePosition(index: number) {
     const startX = 150;
     const spacingX = 150;
-    const startY = 450;
+    const startY = 345;
     const bottleWidth = 64;
     const offsetX = bottleWidth / 2;
     const x = startX + index * spacingX + offsetX;
