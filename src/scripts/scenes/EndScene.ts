@@ -11,13 +11,13 @@ export default class Game extends Phaser.Scene {
     
     create()
     {
-      const image = this.add.image(0, 0, 'MainMenu');
+      const image = this.add.image(0, 0, 'endingImage');
        
       image.setOrigin(0.5);
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
         const content = [
-            'you have escaped the old winter cabin in the Canadian wilderness,',
+            'You have escaped the old winter cabin in the Canadian wilderness,',
             'you explored its secrets. As you step outside onto the snow, ',
             'you feel a sense of accomplishment as you have escaped the baffling house.',
             'Now you are on a journey to tell your friends about what has occured.',
