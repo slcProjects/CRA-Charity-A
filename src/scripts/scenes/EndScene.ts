@@ -33,7 +33,7 @@ export default class Game extends Phaser.Scene {
           text.setLineSpacing(17);
           text.setScale(.75);
 
-        const Continue = this.add.image(1000,680,'Continue').setInteractive();
+        const Continue = this.add.image(1000,680,'Continue').setInteractive({ useHandCursor: true });
 
         Continue.on('pointerdown', this.buttonClicked, this);
   

@@ -25,7 +25,7 @@ export default class Game extends Phaser.Scene {
             //Possibly Changed, the story
         ];
           var text = this.add.text(this.cameras.main.centerX - 500, this.cameras.main.centerY - 100, content, textStyle);
-        const Continue = this.add.image(1165,680,'Continue').setInteractive();
+        const Continue = this.add.image(1165,680,'Continue').setInteractive({ useHandCursor: true });
 
         Continue.on('pointerdown', this.buttonClicked, this);
   

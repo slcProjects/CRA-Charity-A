@@ -48,7 +48,7 @@ export default class Puzzle1 extends Phaser.Scene {
             button.x += shiftAmount;
         });
     
-        var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+        var Return = this.add.image(95, 40, 'Return').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
           this.scene.start('MainGame');//This is meant to change pages
   
         });
@@ -63,7 +63,7 @@ export default class Puzzle1 extends Phaser.Scene {
           });
         }
 
-        var Paper = this.add.image(1150, 500, 'Paper').setInteractive().on('pointerdown', ()=> {
+        var Paper = this.add.image(1150, 500, 'Paper').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
           this.scene.start('paperScene');//This is meant to change pages
   
         });

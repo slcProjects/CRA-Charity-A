@@ -30,7 +30,7 @@ constructor() {
     }
     const Antlers = this.add.rectangle(420,200,50,50).setInteractive({ useHandCursor: true }); // this will be the moose antlers in game
     var riddle = this.add.image(900, 300, 'Riddle1').setScale(.5);
-    let key = this.add.image(850, 500, 'Key1').setScale(0.1,0.1).setInteractive().setVisible(false);
+    let key = this.add.image(850, 500, 'Key1').setScale(0.1,0.1).setInteractive({ useHandCursor: true }).setVisible(false);
     var textEntry = this.add.text(850, 500, 'Start typing...', { font: '32px Courier', color : 'black'});
     textEntry.visible = false;
     this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
@@ -98,7 +98,7 @@ constructor() {
     });
 
 
-    var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+    var Return = this.add.image(95, 40, 'Return').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
         this.scene.start('puzzle3-4');//This is meant to change pages
     })
   }

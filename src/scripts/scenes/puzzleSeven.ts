@@ -18,7 +18,7 @@ constructor() {
     this.data.set('solvedJigsaw', false);
     }
 
-    var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+    var Return = this.add.image(95, 40, 'Return').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
         this.scene.start('puzzle3-4');//This is meant to change pages
       });
 
@@ -66,9 +66,8 @@ constructor() {
           outlines.push(outline);
           let image = this.add.image(400 + value, 537 + value, 'flag').
                       setCrop(pieceSize * y, pieceSize * x, pieceSize, pieceSize).setDepth(1).
-                      setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x,pieceSize,pieceSize), Phaser.Geom.Rectangle.Contains).
-                      setInteractive({ useHandCursor: true });
-          
+                      setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x,pieceSize,pieceSize), Phaser.Geom.Rectangle.Contains);
+          image.input.cursor = true;
           this.input.setDraggable(image, true);
           if(!this.gotKey){
             image.setAlpha(0);

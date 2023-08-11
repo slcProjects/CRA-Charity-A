@@ -30,7 +30,7 @@ export default class Puzzle2 extends Phaser.Scene {
     hintScene.call(this);
     this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
     // Add the 'Return' button
-    const Return: Phaser.GameObjects.Image = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', () => {
+    const Return: Phaser.GameObjects.Image = this.add.image(95, 40, 'Return').setInteractive({ useHandCursor: true }).on('pointerdown', () => {
       this.scene.start('MainGame');
     });
 
@@ -40,7 +40,7 @@ export default class Puzzle2 extends Phaser.Scene {
       this.data.set('antler', false);
     }
     //Change antler to be with key2 from the second puzzle
-    var Paper = this.add.image(1150, 500, 'Paper').setInteractive().on('pointerdown', ()=> {
+    var Paper = this.add.image(1150, 500, 'Paper').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
       this.scene.start('paperIScene');//This is meant to change pages
 
     });
@@ -68,7 +68,7 @@ export default class Puzzle2 extends Phaser.Scene {
         symbolHeights[i],
         
         
-      ).setInteractive();
+      ).setInteractive({ useHandCursor: true });
 
       const symbolText: Phaser.GameObjects.Text = this.add.text(
         symbolPositionsX[i],

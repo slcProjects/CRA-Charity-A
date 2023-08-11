@@ -27,7 +27,7 @@ export default class Game extends Phaser.Scene {
           puzzle7.x = 630;
           puzzle7.y = 520;
           
-          puzzle7.setInteractive();
+          puzzle7.setInteractive({ useHandCursor: true });
           puzzle7.on('pointerup', () => {
             this.scene.start('puzzleSeven');
           });
@@ -50,7 +50,7 @@ export default class Game extends Phaser.Scene {
           puzzle3.x = 1020;
           puzzle3.y = 350;
          
-          puzzle3.setInteractive();
+          puzzle3.setInteractive({ useHandCursor: true });
           puzzle3.on('pointerup', () => {
             this.scene.start('puzzleThree');
           });
@@ -65,7 +65,7 @@ export default class Game extends Phaser.Scene {
 
           
     
-          var right = this.add.image(1230, 360, 'RightArrow').setInteractive().on('pointerdown', ()=> {
+          var right = this.add.image(1230, 360, 'RightArrow').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
             this.scene.start('MainGame');//This is meant to change pages
     
           });
