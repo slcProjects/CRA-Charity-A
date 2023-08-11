@@ -21,9 +21,9 @@ export default class Puzzle1 extends Phaser.Scene {
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
       
       var hints = [
-        "Hint 1: This is the first hint.",
-        "Hint 2: This is the second hint.",
-        "Hint 3: This is the third hint."
+        "Hint 1: Try reading the paper.",
+        "Hint 2: Read the paper closely it might be helpful.",
+        "Hint 3: It seems the code is a 4 number combinations."
       ];
 
       const hintScene = createHintScene.call(this, hints);

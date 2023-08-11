@@ -21,9 +21,9 @@ export default class Puzzle2 extends Phaser.Scene {
     image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
 
     var hints = [
-      "Hint 1: This is the first hint.",
-      "Hint 2: This is the second hint.",
-      "Hint 3: This is the third hint."
+      "Hint 1: Read The paper.",
+      "Hint 2: Maybe the images have something to do with the puzzle.",
+      "Hint 3: Try thinking of the first letter and number of images."
     ];
 
     const hintScene = createHintScene.call(this, hints);
@@ -34,13 +34,25 @@ export default class Puzzle2 extends Phaser.Scene {
       this.scene.start('MainGame');
     });
 
+    this.showSymbols = this.scene.get('puzzleOne').data.get('fireKey');
+
     if (this.data.get('antler') == null) { // initial false
       this.data.set('antler', false);
     }
     //Change antler to be with key2 from the second puzzle
-    
-    this.showSymbols = this.scene.get('puzzleOne').data.get('fireKey');
+    var Paper = this.add.image(1150, 500, 'Paper').setInteractive().on('pointerdown', ()=> {
+      this.scene.start('paperIScene');//This is meant to change pages
 
+    });
+
+    Paper.setScale(0.35);
+
+    Paper.on('pointerover', () => {
+      Paper.setTexture('PaperH');
+   })
+   Paper.on('pointerout', () => { 
+   Paper.setTexture('Paper');
+   })
     // Create the book symbols
     const symbols: string[] = ['△', 'C', '8', '●', 'A', '4'];
     const symbolPositionsX: number[] = [285, 395, 490, 645, 653, 570,];

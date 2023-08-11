@@ -45,8 +45,12 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('moose','/assets/img/Moose.png')
     this.load.image('canoe','/assets/img/Canoe.png')
     this.load.image('flag','/assets/img/flag.png')
-
-
+    this.load.image('Pz2PImg1', '/assets/img/Pz2Img1.png')
+    this.load.image('Pz2PImg2', '/assets/img/Pz2Img2.png')
+    this.load.image('Pz2PImg3', '/assets/img/Pz2Img3.png')
+    this.load.image('Pz2PImg4', '/assets/img/Pz2Img4.png')
+    this.load.image('Pz2PImg5', '/assets/img/Pz2Img5.png')
+    this.load.image('Pz2PImg6', '/assets/img/Pz2Img6.png')
   }
 
   create() {

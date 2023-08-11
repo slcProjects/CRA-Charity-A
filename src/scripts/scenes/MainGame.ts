@@ -1,5 +1,5 @@
 
-import StartTimer from '../objects/globalTimer';
+import globalTimer from '../objects/globalTimer';
 export default class Game extends Phaser.Scene {
 
  private counter: number = 0;
@@ -23,8 +23,9 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
       
       if (this.counter === 0)
       {
-        StartTimer.startTimer();
+        globalTimer.startTimer();
         this.counter +=1;
+        
       }
       
       else {
@@ -141,7 +142,7 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
    
     update(time, delta) {
       // Call the update function of GlobalTimer to update the timer
-      StartTimer.update(time);
+      globalTimer.update(time);
     }
     goToOptionsScene() {
       this.scene.pause();

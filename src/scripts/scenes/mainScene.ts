@@ -1,4 +1,4 @@
-
+import globalTimer from '../objects/globalTimer';
 export default class MainScene extends Phaser.Scene {
  
 
@@ -31,8 +31,9 @@ export default class MainScene extends Phaser.Scene {
   {
     this.scene.start('storyScene');
   }
-  update() {
-   
+  update(time, delta) {
+    // Call the update function of GlobalTimer to update the timer
+    globalTimer.update(time);
   }
 
   goToOptionsScene() {
