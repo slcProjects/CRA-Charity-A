@@ -11,7 +11,7 @@ export default class Game extends Phaser.Scene {
     
     create()
     {
-      const image = this.add.image(0, 0, 'MainMenu');
+      const image = this.add.image(0, 0, 'End');
        
       image.setOrigin(0.5);
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);

@@ -1,3 +1,4 @@
+import VolumeManager from '../objects/VolumeManager';
 export default class PreloadScene extends Phaser.Scene {
   constructor() {
     super({ key: 'PreloadScene' })
@@ -5,6 +6,7 @@ export default class PreloadScene extends Phaser.Scene {
 
   preload() {
     this.load.image('phaser-logo', 'assets/img/phaser-logo.png')
+    this.load.image('End','./assets/img/endingImage.png')
     this.load.image('StartGameEngButton', './assets/img/Start-Game-Eng.png')
     this.load.image('MainMenu','./assets/img/MainMenu.jpg')
     this.load.image('Key1','./assets/img/PZ1-Key.png')
@@ -51,11 +53,14 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('Pz2PImg4', '/assets/img/Pz2Img4.png')
     this.load.image('Pz2PImg5', '/assets/img/Pz2Img5.png')
     this.load.image('Pz2PImg6', '/assets/img/Pz2Img6.png')
+    for (var i = 1; i <= 6; i++) {
+      this.load.audio('Song' + i, '/assets/Music/Song' + i + '.mp3');
+  }
   }
 
   create() {
-   
-    
+    this.playRandomSong();
+
     this.scene.start('MainScene')
 
     /**
@@ -73,4 +78,17 @@ export default class PreloadScene extends Phaser.Scene {
     // else console.log('The mainScene class will not even be loaded by the browser')
     
   }
+  playRandomSong() {
+    const currentSongIndex = Phaser.Math.Between(1, 6);
+    const music = this.sound.add('Song' + currentSongIndex, {
+        volume: VolumeManager.getVolume() / 100,
+        loop: true
+    });
+    music.play();
+
+
+    
+}
+
+  
 }

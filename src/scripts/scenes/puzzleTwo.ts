@@ -34,11 +34,7 @@ export default class Puzzle2 extends Phaser.Scene {
       this.scene.start('MainGame');
     });
 
-    this.showSymbols = this.scene.get('puzzleOne').data.get('fireKey');
-
-    if (this.data.get('antler') == null) { // initial false
-      this.data.set('antler', false);
-    }
+   
     //Change antler to be with key2 from the second puzzle
     var Paper = this.add.image(1150, 500, 'Paper').setInteractive().on('pointerdown', ()=> {
       this.scene.start('paperIScene');//This is meant to change pages
@@ -76,14 +72,7 @@ export default class Puzzle2 extends Phaser.Scene {
         symbols[i],
         { font: 'bold 14px Arial', color: '#000000', wordWrap: { width: 60 }, align: 'center',  }
       );
-      if(this.showSymbols)
-      {
-        symbolText.setAlpha(1);
-      }
-      else
-      {
-        symbolText.setAlpha(0);
-      }
+      
       symbolText.setOrigin(0.5);
       if (i === 0) {
         // Apply CSS class to make symbols 1 and 4 larger

@@ -8,7 +8,7 @@ export function createHintScene(hints: string[]) {
     const DEFAULT_HEIGHT = 720;
 
     // Create the hint popup screen
-    const hintPopup = scene.add.container(DEFAULT_WIDTH / 2 + 200, DEFAULT_HEIGHT / 2 - 50);
+    const hintPopup = scene.add.container(DEFAULT_WIDTH / 2 + 350, DEFAULT_HEIGHT / 2 - 150);
     hintPopup.setVisible(false);
     hintPopup.setDepth(2);
     

@@ -13,7 +13,7 @@ constructor() {
     image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
     image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
 
-    this.gotKey = this.scene.get('puzzleThree').data.get('solvedRiddle'); // gets data from other scene
+    
     if(this.data.get('solvedJigsaw') == null){ // sets starting values once when they are nothing
     this.data.set('solvedJigsaw', false);
     }
@@ -70,9 +70,7 @@ constructor() {
                       setInteractive({ useHandCursor: true });
           
           this.input.setDraggable(image, true);
-          if(!this.gotKey){
-            image.setAlpha(0);
-          }
+         
           images.push(image);
         }
 

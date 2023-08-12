@@ -10,7 +10,7 @@ function update(time) {
     const deltaTime = (time - lastTime) / 1000;
     timer += deltaTime;
     lastTime = time;
-    console.log("Current Time: " + time);
+    
   } else if (isRunning === false) {
     console.log("It's Off");
   }
