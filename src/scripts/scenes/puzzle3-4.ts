@@ -39,7 +39,7 @@ export default class Game extends Phaser.Scene {
             if(this.gotKey)
             image.setTexture('lobby3-4Cannoe');
           else{
-            
+            image.setTexture('lobby3-4CannoeR');
           }
          })
    

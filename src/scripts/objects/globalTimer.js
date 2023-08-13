@@ -1,6 +1,7 @@
 let timer = 0;
 let lastTime = 0;
 let isRunning = false;
+import MainScene from '../scenes/mainScene';
 
 function update(time) {
   if (isRunning === true) {
@@ -29,7 +30,11 @@ function resetTimer() {
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);
-  return `${minutes} minutes ${remainingSeconds} seconds`;
+
+  const minutesText = MainScene.selectedLanguage === 'English' ? 'minutes' : 'minutes';
+  const secondsText = MainScene.selectedLanguage === 'English' ? 'seconds' : 'secondes';
+
+  return `${minutes} ${minutesText} ${remainingSeconds} ${secondsText}`;
 }
 
 function startTimer() {

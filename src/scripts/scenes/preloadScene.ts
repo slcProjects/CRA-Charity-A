@@ -6,6 +6,8 @@ export default class PreloadScene extends Phaser.Scene {
 
   preload() {
     this.load.image('phaser-logo', 'assets/img/phaser-logo.png')
+    this.load.image('EnglishB','./assets/img/englishButton.png')
+    this.load.image('FrenchB','./assets/img/frenchButton.png')
     this.load.image('End','./assets/img/endingImage.png')
     this.load.image('StartGameEngButton', './assets/img/Start-Game-Eng.png')
     this.load.image('MainMenu','./assets/img/MainMenu.jpg')
@@ -22,9 +24,9 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('bottleA','./assets/img/bottleA.png')
     this.load.image('bottleB','./assets/img/bottleB.png')
     this.load.image('bottleC','./assets/img/bottleC.png')
-    this.load.image('table','./assets/img/Table.png')
     this.load.image('lobby','./assets/img/Lobby.png')
     this.load.image('lobbyH','./assets/img/LobbyHighlight.png')
+    this.load.image('lobbyHR','./assets/img/LobbyHighlightR.png')
     this.load.image('lobbyHF','./assets/img/LobbyHF.png')
     this.load.image('FirePit','./assets/img/FirePit.png')
     this.load.image('leftArrowHint','./assets/img/leftArrowHint.png')
@@ -37,8 +39,10 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('lobby3-4','/assets/img/Lobby3-4.png')
     this.load.image('Kitchen','/assets/img/Kitchen.png');
     this.load.image('KitchenH','/assets/img/KitchenH.png');
+    this.load.image('KitchenHR','/assets/img/KitchenHR.png');
     this.load.image('KitchenM','/assets/img/KitchenM.png');
     this.load.image('lobby3-4Cannoe','/assets/img/Lobby3-4Cannoe.png')
+    this.load.image('lobby3-4CannoeR','/assets/img/Lobby3-4CannoeR.png')
     this.load.image('lobby3-4Antlers','/assets/img/Lobby3-4Antlers.png')
     this.load.image('Options', '/assets/img/options.png')
     this.load.image('FinalKey','./assets/img/FinalKey.png')
@@ -47,6 +51,7 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('moose','/assets/img/Moose.png')
     this.load.image('canoe','/assets/img/Canoe.png')
     this.load.image('flag','/assets/img/flag.png')
+    this.load.image('Enter','./assets/img/Enter.png')
     this.load.image('Pz2PImg1', '/assets/img/Pz2Img1.png')
     this.load.image('Pz2PImg2', '/assets/img/Pz2Img2.png')
     this.load.image('Pz2PImg3', '/assets/img/Pz2Img3.png')

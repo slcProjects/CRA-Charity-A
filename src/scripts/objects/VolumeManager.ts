@@ -1,5 +1,5 @@
 export default class VolumeManager {
-    static volumePercentage: number = 0; // set back to 50
+    static volumePercentage: number = 50;
     static globalVolume: number = 0.5; // Default global volume
 
     static increaseVolume() {

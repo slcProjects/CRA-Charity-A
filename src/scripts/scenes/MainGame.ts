@@ -105,7 +105,7 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
             image.setTexture('lobbyH');
           }
           else{
-            
+            image.setTexture('lobbyHR');
           }
          })
    

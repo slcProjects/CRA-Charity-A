@@ -1,5 +1,6 @@
 import GlobalTimer from '../objects/globalTimer';
 import VolumeManager from '../objects/VolumeManager';
+import MainScene from './mainScene'; 
 export default class Options extends Phaser.Scene {
   fromScene: string;
   pauseMenuContainer: Phaser.GameObjects.Container | null;
@@ -125,8 +126,14 @@ updateVolumeText() {
   handleGlobalTimerUpdate() {
     const timerValue = GlobalTimer.getTimer();
     const formattedTime = GlobalTimer.formatTime(timerValue);
+
+    // English and French versions of the timer text
+    const timerTextEnglish = `Time: ${formattedTime}`;
+    const timerTextFrench = `Temps : ${formattedTime}`;
+
+    // Set the timer text based on the selected language
     if (this.timerText) {
-      this.timerText.setText(`Time: ${formattedTime}`);
+      this.timerText.setText(MainScene.selectedLanguage === 'English' ? timerTextEnglish : timerTextFrench);
     }
   }
 }
