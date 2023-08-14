@@ -1,7 +1,7 @@
 
 import globalTimer from '../objects/globalTimer';
 export default class Game extends Phaser.Scene {
-
+public key1; 
  private counter: number = 0;
     constructor() {
         super({ key: 'MainGame' })
@@ -38,10 +38,11 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
       this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+      this.key1 = this.scene.get('puzzleOne').data.get('fireKey');
 
-      if (this.data.get('antler') == null){ // inital false
-        this.data.set('antler', false)
-        }
+      if (this.data.get('antler') == null) { // initial false
+        this.data.set('antler', false);
+      }
         //Change antler to be with key2 from the second puzzle
 
         var left = this.add.image(50, 360, 'LeftArrow').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
@@ -90,12 +91,22 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
 
           puzzle2.setInteractive({ useHandCursor: true });
           puzzle2.on('pointerup', () => {
-            this.scene.start('puzzleTwo');
+            if(this.key1)
+            { 
+              this.scene.start('puzzleTwo');
+            }
+            
           });
 
           
           puzzle2.on('pointerover', () => {
+            if(this.key1)
+            {
             image.setTexture('lobbyH');
+          }
+          else{
+            image.setTexture('lobbyHR');
+          }
          })
    
          puzzle2.on('pointerout', () => { 

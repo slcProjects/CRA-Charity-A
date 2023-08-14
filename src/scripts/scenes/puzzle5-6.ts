@@ -1,6 +1,7 @@
 import GlobalTimer from '../objects/globalTimer';
 
 export default class Game extends Phaser.Scene {
+  public lastKey
     constructor() {
         super({ key: 'puzzle5-6' })
       }
@@ -28,15 +29,20 @@ export default class Game extends Phaser.Scene {
           puzzle5.x = 510;
           puzzle5.y = 285;
           
-
+          this.lastKey = this.scene.get('puzzleSeven').data.get('solvedJigsaw'); // gets data from other scene
           puzzle5.setInteractive();
           puzzle5.on('pointerup', () => {
+            
             this.scene.start('puzzleFive');
           });
 
           
           puzzle5.on('pointerover', () => {
+            if(this.lastKey)
             image.setTexture('KitchenH');
+          else{
+            image.setTexture('KitchenHR');
+          }
          })
    
          puzzle5.on('pointerout', () => { 

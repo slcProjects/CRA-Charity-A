@@ -1,6 +1,7 @@
 import GlobalTimer from '../objects/globalTimer';
 
 export default class Game extends Phaser.Scene {
+  public gotKey;
     constructor() {
         super({ key: 'puzzle3-4' })
       }
@@ -26,14 +27,25 @@ export default class Game extends Phaser.Scene {
           );
           puzzle7.x = 630;
           puzzle7.y = 520;
+<<<<<<< HEAD
           
           puzzle7.setInteractive({ useHandCursor: true });
+=======
+          this.gotKey = this.scene.get('puzzleThree').data.get('solvedRiddle'); // gets data from other scene
+
+          puzzle7.setInteractive();
+>>>>>>> Marco
           puzzle7.on('pointerup', () => {
+            if(this.gotKey)
             this.scene.start('puzzleSeven');
           });
           
           puzzle7.on('pointerover', () => {
+            if(this.gotKey)
             image.setTexture('lobby3-4Cannoe');
+          else{
+            image.setTexture('lobby3-4CannoeR');
+          }
          })
    
          puzzle7.on('pointerout', () => { 

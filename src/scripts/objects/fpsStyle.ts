@@ -4,6 +4,12 @@ export const textStyle = {
     align: 'center'
   };
 
+  export const introStyle = {
+    font: 'bold 32px Arial',
+    fill: '#000000', // White color
+    align: 'center'
+  };
+
   export const paperStyle = {
     font: 'bold 28px Arial',
     fill: '#000000', // White color

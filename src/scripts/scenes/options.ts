@@ -1,5 +1,6 @@
 import GlobalTimer from '../objects/globalTimer';
-
+import VolumeManager from '../objects/VolumeManager';
+import MainScene from './mainScene'; 
 export default class Options extends Phaser.Scene {
   fromScene: string;
   pauseMenuContainer: Phaser.GameObjects.Container | null;
@@ -98,29 +99,41 @@ export default class Options extends Phaser.Scene {
   }
 
   onVolumeLeftClicked() {
-    this.volumePercentage = Phaser.Math.Clamp(this.volumePercentage - 10, 0, 100);
+    VolumeManager.decreaseVolume();
     this.updateVolumeText();
-    console.log("Volume Down Clicked");
-  }
+    this.updateGlobalVolume();
+}
 
-  onVolumeRightClicked() {
-    this.volumePercentage = Phaser.Math.Clamp(this.volumePercentage + 10, 0, 100);
+onVolumeRightClicked() {
+    VolumeManager.increaseVolume();
     this.updateVolumeText();
-    console.log("Volume Up Clicked");
-  }
+    this.updateGlobalVolume();
+}
 
-  updateVolumeText() {
-    if (this.volumeText) {
+updateGlobalVolume() {
+  const globalVolume = VolumeManager.getVolume() / 100;
+  this.sound.volume = globalVolume;
+  VolumeManager.setGlobalVolume(globalVolume);
+}
+
+updateVolumeText() {
+  if (this.volumeText) {
+      this.volumePercentage = VolumeManager.getVolume();
       this.volumeText.setText(`Volume:  ${this.volumePercentage}%`);
-    }
   }
-
+}
   // Custom callback to update the timer text
   handleGlobalTimerUpdate() {
     const timerValue = GlobalTimer.getTimer();
     const formattedTime = GlobalTimer.formatTime(timerValue);
+
+    // English and French versions of the timer text
+    const timerTextEnglish = `Time: ${formattedTime}`;
+    const timerTextFrench = `Temps : ${formattedTime}`;
+
+    // Set the timer text based on the selected language
     if (this.timerText) {
-      this.timerText.setText(`Time: ${formattedTime}`);
+      this.timerText.setText(MainScene.selectedLanguage === 'English' ? timerTextEnglish : timerTextFrench);
     }
   }
 }

@@ -1,21 +1,29 @@
 import GlobalTimer from '../objects/globalTimer';
 import { riddleStyle } from '../objects/fpsStyle';
-import { createHintScene } from '../objects/hints'
+import { createHintScene } from '../objects/hints';
+import MainScene from './mainScene';
 export default class Game extends Phaser.Scene {
-  private showBottles;
+  
   constructor() {
     super({ key: 'puzzleFive' });
   }
 
   create() {
-    var hints = [
+    var hintsEnglish = [
       "Hint 1: You can drag and drop the bottles.",
       "Hint 2: Put the Bottles in the boxes.",
       "Hint 3: Put the Bottles in the correct order."
-    ];
+  ];
 
-    const hintScene = createHintScene.call(this, hints);
+  var hintsFrench = [
+      "Indice 1: Vous pouvez faire glisser et déposer les bouteilles.",
+      "Indice 2: Placez les bouteilles dans les boîtes.",
+      "Indice 3: Placez les bouteilles dans le bon ordre."
+  ];
+
+  const hintScene = createHintScene.call(this, MainScene.selectedLanguage === 'English' ? hintsEnglish : hintsFrench);
   hintScene.call(this);
+
     var Return = this.add
       .image(95, 40, 'Return')
       .setInteractive({useHandCursor: true })
@@ -31,7 +39,7 @@ export default class Game extends Phaser.Scene {
     const key5 = this.add.image(783, 500, 'FinalKey');
     key5.setScale(0.07);
     key5.setAlpha(0);
-    this.showBottles = this.scene.get('puzzleSeven').data.get('solvedJigsaw'); // gets data from other scene
+    
 
     const createBox = (x: number, y: number) => {
       return this.add
@@ -45,11 +53,21 @@ export default class Game extends Phaser.Scene {
       this.scene.start('puzzle5-6');//This is meant to change pages
 
     });
-    const riddleBottleB = "Bottle B: 'Lighter than C.'";
-    const riddleBottleC = "Bottle C: 'Heavier than A.'";
-    const riddleBottleA = "Bottle A: 'Heavier than B.'";
+    const riddleBottleB = MainScene.selectedLanguage === 'English' ?
+            "Bottle B: 'Lighter than C.'" :
+            "Bouteille B:'Plus légère que C.'";
 
-    const riddleText = "Arrange the bottles from heaviest to lightest"
+        const riddleBottleC = MainScene.selectedLanguage === 'English' ?
+            "Bottle C: 'Heavier than A.'" :
+            "Bouteille C:'Plus lourde que A.'";
+
+        const riddleBottleA = MainScene.selectedLanguage === 'English' ?
+            "Bottle A: 'Heavier than B.'" :
+            "Bouteille A:'Plus lourde que B.'";
+
+        const riddleText = MainScene.selectedLanguage === 'English' ?
+            "Arrange the bottles from heaviest to lightest" :
+            "Organiser les bouteilles du plus lourd au plus léger";
 
     // Create text objects for each riddle using riddleStyle
     const textBottleB = this.add.text(750, 500, riddleBottleB, riddleStyle);
@@ -105,9 +123,7 @@ export default class Game extends Phaser.Scene {
     const bottles = [bottleA, bottleB, bottleC];
 
     bottles.forEach((bottle, index) => {
-      if(!this.showBottles){
-         bottle.setAlpha(0);
-      }
+   
       bottle.setInteractive({ draggable: true });
       this.input.setDraggable(bottle);
 
