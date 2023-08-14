@@ -42,7 +42,9 @@ export default class Puzzle3 extends Phaser.Scene {
         }
 
         const Antlers = this.add.rectangle(420, 200, 50, 50).setInteractive({ useHandCursor: true }); // this will be the moose antlers in game
-        var riddle = this.add.image(900, 300, 'Riddle1').setScale(0.5);
+        const riddle1ImageKey = MainScene.selectedLanguage === 'English' ? 'Riddle1' : 'Riddle1Fr';
+        const riddle2ImageKey = MainScene.selectedLanguage === 'English' ? 'Riddle2' : 'Riddle2Fr';
+        var riddle = this.add.image(900, 300, riddle1ImageKey).setScale(0.5);
         let key = this.add.image(850, 500, 'Key1').setScale(0.1, 0.1).setInteractive().setVisible(false);
         var textEntry = this.add.text(850, 500, 'Start typing...', { font: '32px Courier', color: 'black' });
         textEntry.visible = false;
@@ -51,9 +53,8 @@ export default class Puzzle3 extends Phaser.Scene {
 
         if (this.data.get('openedAntlers')) {
             // used for saving progress after switching scenes
-            console.log("opened key");
             riddle.destroy();
-            riddle = this.add.image(900, 300, 'Riddle2').setScale(0.5);
+            riddle = this.add.image(900, 300, riddle2ImageKey).setScale(0.5);
             textEntry.visible = true;
             Antlers.disableInteractive();
             Antlers.setAlpha(0.5);
@@ -78,7 +79,7 @@ export default class Puzzle3 extends Phaser.Scene {
                 Antlers.setAlpha(0.5);
                 this.data.set('openedAntlers', true);
                 riddle.destroy();
-                riddle = this.add.image(900, 300, 'Riddle2').setScale(0.5);
+                riddle = this.add.image(900, 300, riddle2ImageKey).setScale(0.5);
                 textEntry.visible = true;
             }
         });
@@ -98,11 +99,11 @@ export default class Puzzle3 extends Phaser.Scene {
                 textEntry.text += event.key;
             }
 
-            if (textEntry.text.toLowerCase() == 'gem') {
+            if (textEntry.text.toLowerCase() == 'gem' ||textEntry.text.toLowerCase() =='bijou') {
                 this.data.set('solvedRiddle', true);
                 textEntry.visible = false;
                 key.visible = true;
-            } else if (textEntry.text.length > 3 || event.keyCode === 13) {
+            } else if (textEntry.text.length > 5 || event.keyCode === 13) {
                 // enter
                 textEntry.text = '';
             }
