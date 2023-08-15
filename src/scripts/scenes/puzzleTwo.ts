@@ -10,44 +10,9 @@ export default class Puzzle2 extends Phaser.Scene {
     private symbolButtonActivated: boolean[] = [];
     private showSymbols;
 
-<<<<<<< HEAD
-  constructor() {
-    super({ key: 'puzzleTwo' });
-  }
-
-  create() {
-    const image = this.add.image(0, 0, 'Books');
-    image.setOrigin(0.5);
-    image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
-    image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
-
-    var hints = [
-      "Hint 1: Read The paper.",
-      "Hint 2: Maybe the images have something to do with the puzzle.",
-      "Hint 3: Try thinking of the first letter and number of images."
-    ];
-
-    const hintScene = createHintScene.call(this, hints);
-    hintScene.call(this);
-    this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
-    // Add the 'Return' button
-    const Return: Phaser.GameObjects.Image = this.add.image(95, 40, 'Return').setInteractive({ useHandCursor: true }).on('pointerdown', () => {
-      this.scene.start('MainGame');
-    });
-
-    this.showSymbols = this.scene.get('puzzleOne').data.get('fireKey');
-
-    if (this.data.get('antler') == null) { // initial false
-      this.data.set('antler', false);
-    }
-    //Change antler to be with key2 from the second puzzle
-    var Paper = this.add.image(1150, 500, 'Paper').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
-      this.scene.start('paperIScene');//This is meant to change pages
-=======
     constructor() {
         super({ key: 'puzzleTwo' });
     }
->>>>>>> Marco
 
     create() {
         const image = this.add.image(0, 0, 'Books');
@@ -67,22 +32,10 @@ export default class Puzzle2 extends Phaser.Scene {
             "Indice 3: Essayez de penser à la première lettre et au nombre d'images. (En anglais)"
         ];
 
-<<<<<<< HEAD
-    for (let i = 0; i < symbols.length; i++) {
-      const symbolButton: Phaser.GameObjects.Rectangle = this.add.rectangle(
-        symbolPositionsX[i],
-        symbolPositionsY[i], 
-        symbolWidths[i],
-        symbolHeights[i],
-        
-        
-      ).setInteractive({ useHandCursor: true });
-=======
         const hintScene = createHintScene.call(this, MainScene.selectedLanguage === 'English' ? hintsEnglish : hintsFrench);
         hintScene.call(this);
->>>>>>> Marco
 
-        this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+        this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
 
         // Add the 'Return' button
         const Return: Phaser.GameObjects.Image = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', () => {

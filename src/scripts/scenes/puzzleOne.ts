@@ -57,47 +57,7 @@ export default class Puzzle1 extends Phaser.Scene {
             });
             buttons.push(button);
         }
-<<<<<<< HEAD
-        const shiftAmount = 100; // Adjust the amount by which you want to shift the buttons
-        
-        buttons.forEach((button) => {
-            button.x += shiftAmount;
-        });
-    
-        var Return = this.add.image(95, 40, 'Return').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
-          this.scene.start('MainGame');//This is meant to change pages
-  
-        });
-        this.key.on('pointerdown', ()=> { 
-          this.key.setAlpha(0);
-        });
-
-        if(this.data.get('fireKey') == true)
-        {
-          buttons.forEach((button) => {
-            this.disableButton(button);
-          });
-        }
-
-        var Paper = this.add.image(1150, 500, 'Paper').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
-          this.scene.start('paperScene');//This is meant to change pages
-  
-        });
-  
-        Paper.setScale(0.35);
-  
-        Paper.on('pointerover', () => {
-          Paper.setTexture('PaperH');
-       })
-  
-       Paper.on('pointerout', () => { 
-        Paper.setTexture('Paper');
-       })
-      
-=======
-
->>>>>>> Marco
-        this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+        this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
 
        
 

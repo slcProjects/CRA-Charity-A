@@ -37,7 +37,7 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
       image.setOrigin(0.5);
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
-      this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+      this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
       this.key1 = this.scene.get('puzzleOne').data.get('fireKey');
 
       if (this.data.get('antler') == null) { // initial false

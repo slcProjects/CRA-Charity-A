@@ -14,7 +14,7 @@ export default class Game extends Phaser.Scene {
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
         
-      this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+      this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
         
 
     
@@ -27,14 +27,9 @@ export default class Game extends Phaser.Scene {
           );
           puzzle7.x = 630;
           puzzle7.y = 520;
-<<<<<<< HEAD
-          
-          puzzle7.setInteractive({ useHandCursor: true });
-=======
           this.gotKey = this.scene.get('puzzleThree').data.get('solvedRiddle'); // gets data from other scene
 
           puzzle7.setInteractive();
->>>>>>> Marco
           puzzle7.on('pointerup', () => {
             if(this.gotKey)
             this.scene.start('puzzleSeven');

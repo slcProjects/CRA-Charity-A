@@ -13,7 +13,7 @@ export default class Game extends Phaser.Scene {
         image.setOrigin(0.5);
         image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
         image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
-        this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+        this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
         var left = this.add.image(50, 360, 'LeftArrow').setInteractive().on('pointerdown', ()=> {
             this.scene.start('MainGame');//This is meant to change pages
     

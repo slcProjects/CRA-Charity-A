@@ -19,14 +19,9 @@ export default class MainScene extends Phaser.Scene {
     image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
     image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
 
-    this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+    this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
 
-<<<<<<< HEAD
-    const StartGameEngButton = this.add.image(645, 360, 'StartGameEngButton').setInteractive({ useHandCursor: true });
-   
-=======
     const StartGameEngButton = this.add.image(645, 360, 'StartGameEngButton').setInteractive();
->>>>>>> Marco
     StartGameEngButton.on('pointerdown', this.buttonClicked, this);
 
     // Create a transparent hit area rectangle for the button

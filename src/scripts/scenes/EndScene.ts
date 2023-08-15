@@ -13,20 +13,6 @@ export default class Game extends Phaser.Scene {
     create() {
         const image = this.add.image(0, 0, 'End');
     
-<<<<<<< HEAD
-    create()
-    {
-      const image = this.add.image(0, 0, 'endingImage');
-       
-      image.setOrigin(0.5);
-      image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
-      image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
-        const content = [
-            'You have escaped the old winter cabin in the Canadian wilderness,',
-            'you explored its secrets. As you step outside onto the snow, ',
-            'you feel a sense of accomplishment as you have escaped the baffling house.',
-            'Now you are on a journey to tell your friends about what has occured.',
-=======
         image.setOrigin(0.5);
         image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
         image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
@@ -36,7 +22,6 @@ export default class Game extends Phaser.Scene {
             'you\'ve explored its secrets. As you step outside onto the snow, ',
             'you feel a sense of accomplishment as you have escaped this weird house full of puzzles.',
             'Now you are on a journey to tell your friends about what has occurred.',
->>>>>>> Marco
             '                                                             ',
             '                                                             ',
             '                                                             ',
@@ -70,14 +55,6 @@ export default class Game extends Phaser.Scene {
         Continue.on('pointerdown', this.showPopup, this);
     }
 
-<<<<<<< HEAD
-        const Continue = this.add.image(1000,680,'Continue').setInteractive({ useHandCursor: true });
-
-        Continue.on('pointerdown', this.buttonClicked, this);
-  
-
-          
-=======
     showPopup() {
         this.#popup = this.add.container(0, 0);
     
@@ -118,7 +95,7 @@ export default class Game extends Phaser.Scene {
     
         this.#popup.add([popupBackground, congratulations, enterNameText, this.#nameInput, ContinueButtonPopup]);
     
-        this.input.keyboard.on('keydown', (event) => {
+        this.input.keyboard?.on('keydown', (event) => {
             if (this.#nameInput.text.length < 11) {
                 if (event.key.match(/^[a-zA-Z0-9\s]$/)) {
                     this.#nameInput.text += event.key;
@@ -127,7 +104,6 @@ export default class Game extends Phaser.Scene {
                 }
             }
         });
->>>>>>> Marco
     }
     
     handleEnterPressed() {
