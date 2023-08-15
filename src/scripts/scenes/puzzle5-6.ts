@@ -36,7 +36,7 @@ export default class Game extends Phaser.Scene {
             this.scene.start('puzzleFive');
           });
 
-          
+           //Put the lock back on
           puzzle5.on('pointerover', () => {
             if(this.lastKey)
             image.setTexture('KitchenH');
@@ -72,3 +72,5 @@ export default class Game extends Phaser.Scene {
         console.log({fromScene: this.scene.key})
       }
     }
+//Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca

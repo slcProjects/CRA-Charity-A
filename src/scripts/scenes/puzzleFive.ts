@@ -196,3 +196,5 @@ export default class Game extends Phaser.Scene {
     console.log({fromScene: this.scene.key})
   }
 }
+//Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca

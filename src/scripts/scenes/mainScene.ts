@@ -85,3 +85,5 @@ export default class MainScene extends Phaser.Scene {
     console.log({ fromScene: this.scene.key });
   }
 }
+//Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca

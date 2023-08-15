@@ -1,6 +1,9 @@
 import { textStyle } from '../objects/fpsStyle';
 import GlobalTimer from '../objects/globalTimer'; // Import the global timer
+import GameM from './MainGame';
 import MainScene from './mainScene';
+
+
 export default class Game extends Phaser.Scene {
 
     #popup; // Private variable for the popup
@@ -26,7 +29,8 @@ export default class Game extends Phaser.Scene {
             '                                                             ',
             '                                                             ',
             '                                                             ',
-            'Created by Marco De Melo and Riley Lawrence-Nebesnuik'
+            'Created by Marco De Melo and Riley Lawrence-Nebesnuik',
+            'French Translations by Marco De Melo'
         ];
     
         const contentFrench = [
@@ -38,7 +42,8 @@ export default class Game extends Phaser.Scene {
             '                                                             ',
             '                                                             ',
             '                                                             ',
-            'Créé par Marco De Melo et Riley Lawrence-Nebesnuik'
+            'Créé par Marco De Melo et Riley Lawrence-Nebesnuik',
+            'Translation francais par Marco De Melo'
         ];
     
         const selectedLanguageContent = MainScene.selectedLanguage === 'English' ? contentEnglish : contentFrench;
@@ -104,13 +109,26 @@ export default class Game extends Phaser.Scene {
                 }
             }
         });
+       
     }
     
     handleEnterPressed() {
+       
+        let gameReset = true;
+        const mainGameScene = this.scene.get('MainGame');
+
+        if (mainGameScene instanceof GameM) {
+            mainGameScene.updateBooleanValue(gameReset);
+        }
         const userName = this.#nameInput.text.trim();
         if (userName !== '') {
+            GlobalTimer.update(this.time);
             console.log(`Name: ${userName}\nTime: ${GlobalTimer.formatTime(GlobalTimer.getTimer())}`);
+            GlobalTimer.resetTimer();
             this.scene.start('MainScene');
         }
+        
     }
 }
+//Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca

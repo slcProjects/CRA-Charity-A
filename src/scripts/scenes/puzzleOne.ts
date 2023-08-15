@@ -128,3 +128,5 @@ export default class Puzzle1 extends Phaser.Scene {
         button.setAlpha(1);
     }
 }
+//Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca

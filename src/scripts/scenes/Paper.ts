@@ -62,3 +62,5 @@ export default class Paper extends Phaser.Scene {
         this.scene.start('puzzleOne');
     }
 }
+//Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca

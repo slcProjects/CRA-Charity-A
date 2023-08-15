@@ -22,3 +22,5 @@ export default class VolumeManager {
         return this.volumePercentage;
     }
 }
+//Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca

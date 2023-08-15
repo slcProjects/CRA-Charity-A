@@ -95,3 +95,5 @@ export function createHintScene(hints: string[]) {
     popupBackground.displayHeight *= 0.95;
   };
 }
+//Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca

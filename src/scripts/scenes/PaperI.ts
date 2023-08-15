@@ -44,3 +44,5 @@ export default class Paper extends Phaser.Scene {
 
 
 }
+//Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca

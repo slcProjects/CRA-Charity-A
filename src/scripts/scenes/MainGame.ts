@@ -1,11 +1,12 @@
 
 import globalTimer from '../objects/globalTimer';
-export default class Game extends Phaser.Scene {
+export default class GameM extends Phaser.Scene {
 public key1; 
- private counter: number = 0;
+public counter: number = 0;
+public resetGame: boolean = false;
     constructor() {
         super({ key: 'MainGame' })
-        
+       
       }
 
 /*pointerup: This event is triggered when a pointer (mouse button or touch) is released after being pressed down on
@@ -20,14 +21,19 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
 */
     create()
     {
-      
+      if(this.resetGame === true)
+      {
+        this.counter=0;
+        console.log("Game has been reset");
+        this.resetGame = false;
+      }
       if (this.counter === 0)
       {
         globalTimer.startTimer();
         this.counter +=1;
         
       }
-      
+   
       else {
         console.log("U CAN'T ENTER")
       }
@@ -146,10 +152,12 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
          right.on('pointerout', () => { 
            right.setTexture('RightArrow');
          })
-    
+        
     }
   
-  
+    updateBooleanValue(newValue: boolean) {
+      this.resetGame = newValue;
+  }
    
     update(time, delta) {
       // Call the update function of GlobalTimer to update the timer
@@ -160,4 +168,10 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
       this.scene.start('Options', { fromScene: this.scene.key });
       console.log({fromScene: this.scene.key})
     }
+    
+
+  
 }
+
+//Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca

@@ -57,3 +57,6 @@ const config: Phaser.Types.Core.GameConfig = {
 window.addEventListener('load', () => {
   const game = new Phaser.Game(config);
 });
+
+//Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca

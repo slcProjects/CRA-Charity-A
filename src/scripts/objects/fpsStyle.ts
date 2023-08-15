@@ -24,3 +24,5 @@ export const textStyle = {
       width: 300, // Maximum width of the text
     },
   };
+  //Author Marco De Melo
+//marco.demelo2@Student.Sl.On.Ca
