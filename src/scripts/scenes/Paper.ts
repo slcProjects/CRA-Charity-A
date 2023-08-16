@@ -22,7 +22,7 @@ export default class Paper extends Phaser.Scene {
 
         const contentFrench = [
             'Il y avait une famille de 5 personnes vivant dans une cabane d\'hiver,',
-            'ils appréciaient leur vie simple, s\'endormant à 20 heures chaque jour. ',
+            'ils appréciaient leur vie simple, s\'endormant à 8 heures du soir chaque jour. ',
             'Un jour, il y a eu une effraction, tout le famille allait bien,',
             'mais ils ont volé 3 objets importants pour eux. Depuis ce jour,',
             'ils ont sécurisé leurs biens avec des serrures et des clés cachées,',
