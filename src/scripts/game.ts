@@ -53,10 +53,12 @@ const config: Phaser.Types.Core.GameConfig = {
     },
   },
 };
+function setTitle(newTitle) {
+  document.title = newTitle;
+}
 
 window.addEventListener('load', () => {
   const game = new Phaser.Game(config);
 });
 
-//Author Marco De Melo
-//marco.demelo2@Student.Sl.On.Ca
+setTitle("Maple Mysteries: Quest for the Northern Puzzle");

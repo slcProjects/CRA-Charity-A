@@ -1,65 +1,69 @@
-import globalTimer from '../objects/globalTimer';
-import { introStyle } from '../objects/fpsStyle';
+import globalTimer from '../objects/globalTimer'; // Importing the globalTimer module from a specific path
+import { introStyle } from '../objects/fpsStyle'; // Importing the introStyle from a specific path
 
-export default class MainScene extends Phaser.Scene {
-  static selectedLanguage: string = 'English';
-  languageButton: Phaser.GameObjects.Image; // Change the type to Image
-  languageImage: Phaser.GameObjects.Image;
-  languageText: Phaser.GameObjects.Text;
-
+export default class MainScene extends Phaser.Scene { // Defining the MainScene class that extends Phaser.Scene
+  static selectedLanguage: string = 'English'; // Setting the default selected language to English
+  languageButton: Phaser.GameObjects.Image; // Declaring a variable to store a Phaser Image object for the language button
+  languageImage: Phaser.GameObjects.Image; // Declaring a variable to store a Phaser Image object for the language image
+  languageText: Phaser.GameObjects.Text; // Declaring a variable to store a Phaser Text object for the language text
+  bottomLeftText: Phaser.GameObjects.Text;
   constructor() {
-    super({ key: 'MainScene' });
+    super({ key: 'MainScene' }); // Calling the constructor of the parent class with a specific key
 
-    MainScene.selectedLanguage = 'English';
+    MainScene.selectedLanguage = 'English'; // Setting the selected language to English
   }
 
   create() {
-    const image = this.add.image(0, 0, 'MainMenu');
-    image.setOrigin(0.5);
-    image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
-    image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
+    const image = this.add.image(0, 0, 'MainMenu'); // Adding an image at coordinates (0, 0) with the 'MainMenu' key
+    image.setOrigin(0.5); // Setting the origin of the image to its center
+    image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY); // Positioning the image at the center of the camera
+    image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height); // Scaling the image to fit the camera
 
-    this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+    this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this); // Listening for the 'ESC' key press to trigger the goToOptionsScene function
 
-    const StartGameEngButton = this.add.image(645, 360, 'StartGameEngButton').setInteractive();
-    StartGameEngButton.on('pointerdown', this.buttonClicked, this);
+    const StartGameEngButton = this.add.image(645, 360, 'StartGameEngButton').setInteractive(); // Adding an interactive image button at (645, 360) with the 'StartGameEngButton' key
+    StartGameEngButton.on('pointerdown', this.buttonClicked, this); // Listening for a pointer click on the button to trigger the buttonClicked function
 
-    // Create a transparent hit area rectangle for the button
-    const hitArea = this.add.rectangle(this.cameras.main.centerX, 460, 150, 50, 0x000000, 0).setInteractive();
+    const hitArea = this.add.rectangle(this.cameras.main.centerX, 460, 150, 50, 0x000000, 0).setInteractive(); // Creating an invisible interactive hit area rectangle
 
-    // Create language toggle button
-    this.languageButton = this.add.image(this.cameras.main.centerX, 460, 'LanguageButton').setInteractive();
+    this.languageButton = this.add.image(this.cameras.main.centerX, 460, 'LanguageButton').setInteractive(); // Adding an interactive image button for language toggle
+    this.languageButton.on('pointerdown', this.toggleLanguage, this); // Listening for a pointer click on the button to trigger the toggleLanguage function
 
-    this.languageButton.on('pointerdown', this.toggleLanguage, this);
+    this.languageImage = this.add.image(this.cameras.main.centerX, 450, 'EnglishB'); // Adding an image for the selected language
+    this.languageImage.setTint(0xFFFFFF); // Applying a white tint to the language image
 
-    // Create language image
-    this.languageImage = this.add.image(this.cameras.main.centerX, 450, 'EnglishB');
-    this.languageImage.setTint(0xFFFFFF);
+    this.languageText = this.add.text(this.cameras.main.centerX, 500, '', introStyle); // Adding a text object for language display
+    this.languageText.setOrigin(0.5); // Setting the origin of the text to its center
 
-    // Create and position the text based on the selected language
-    this.languageText = this.add.text(this.cameras.main.centerX, 500, '', introStyle);
-    this.languageText.setOrigin(0.5);
-
-    // Set the text based on the selected language
     if (MainScene.selectedLanguage === 'English') {
-      this.languageText.setText("This option cannot be switched in-game");
+      this.languageText.setText("This option cannot be switched in-game"); // Setting text for the language text based on the selected language
     } else if (MainScene.selectedLanguage === 'French') {
-      this.languageText.setText("Cette option ne peut pas être changée en cours de partie");
+      this.languageText.setText("Cette option ne peut pas être changée en cours de partie"); // Setting text for the language text based on the selected language
     }
+    
+      // Initialize the bottom left text element
+      this.bottomLeftText = this.add.text(10, this.cameras.main.height - 10, "Press Esc to access timer/options menu", {
+        font: '16px Arial',
+        color: '#ffffff',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        padding: { x: 10, y: 5 },
+      });
+      this.bottomLeftText.setOrigin(0, 1);
   }
 
   toggleLanguage() {
-    if (MainScene.selectedLanguage === 'English') {
-      MainScene.selectedLanguage = 'French';
-      this.languageImage.setTexture('FrenchB');
+    if (MainScene.selectedLanguage === 'English') { // Checking the selected language
+      MainScene.selectedLanguage = 'French'; // Changing the selected language
+      this.languageImage.setTexture('FrenchB'); // Changing the texture of the language image
+      this.bottomLeftText.setText("Appuyez sur Échap pour accéder à votre menu d’options et voir votre temps");
     } else if (MainScene.selectedLanguage === 'French') {
       MainScene.selectedLanguage = 'English';
       this.languageImage.setTexture('EnglishB');
+      this.bottomLeftText.setText("Press Esc to access your options menu and see your time");
     }
 
-    // Update the text based on the selected language
     if (MainScene.selectedLanguage === 'English') {
-      this.languageText.setText("This option cannot be switched in-game");
+      this.languageText.setText("This option cannot be switched in-game"); // Updating the language text based on the selected language
     } else if (MainScene.selectedLanguage === 'French') {
       this.languageText.setText("Cette option ne peut pas être modifiée pendant le jeu");
     }
@@ -67,23 +71,24 @@ export default class MainScene extends Phaser.Scene {
 
   buttonClicked() {
     if (MainScene.selectedLanguage === 'English') {
-      console.log('Starting the game in English');
+      console.log('Starting the game in English'); // Logging a message based on the selected language
     } else if (MainScene.selectedLanguage === 'French') {
       console.log('Starting the game in French');
     }
 
-    this.scene.start('storyScene');
+    this.scene.start('storyScene'); // Starting the 'storyScene'
   }
 
   update(time, delta) {
-    globalTimer.update(time);
+    globalTimer.update(time); // Updating the global timer
   }
 
   goToOptionsScene() {
-    this.scene.pause();
-    this.scene.start('Options', { fromScene: this.scene.key });
-    console.log({ fromScene: this.scene.key });
+    this.scene.pause(); // Pausing the current scene
+    this.scene.start('Options', { fromScene: this.scene.key }); // Starting the 'Options' scene with additional data
+    console.log({ fromScene: this.scene.key }); // Logging the information about the previous scene
   }
 }
+
 //Author Marco De Melo
 //marco.demelo2@Student.Sl.On.Ca
