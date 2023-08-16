@@ -19,11 +19,7 @@ export default class MainScene extends Phaser.Scene { // Defining the MainScene 
     image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY); // Positioning the image at the center of the camera
     image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height); // Scaling the image to fit the camera
 
-<<<<<<< HEAD
     this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this); // Listening for the 'ESC' key press to trigger the goToOptionsScene function
-=======
-    this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
->>>>>>> ef50fdb60e1d3c8742dc0dcefadc8788c937f182
 
     const StartGameEngButton = this.add.image(645, 360, 'StartGameEngButton').setInteractive(); // Adding an interactive image button at (645, 360) with the 'StartGameEngButton' key
     StartGameEngButton.on('pointerdown', this.buttonClicked, this); // Listening for a pointer click on the button to trigger the buttonClicked function

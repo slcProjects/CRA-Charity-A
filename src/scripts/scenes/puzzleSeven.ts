@@ -69,6 +69,7 @@ export default class Puzzle7 extends Phaser.Scene {
                     .setDepth(1)
                     .setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x, pieceSize, pieceSize), Phaser.Geom.Rectangle.Contains)
                     .setInteractive({ useHandCursor: true });
+                    
                 }
                 else{
                 image = this.add.image(400 + 150, 400 + 150, 'flagFrench')
@@ -76,12 +77,19 @@ export default class Puzzle7 extends Phaser.Scene {
                     .setDepth(1)
                     .setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x, pieceSize, pieceSize), Phaser.Geom.Rectangle.Contains)
                     .setInteractive({ useHandCursor: true });
+                   
                 }
                 this.input.setDraggable(image, true);
 
                 images.push(image);
+                for (let i = 0; i < images.length; i++) {
+                    const x = Phaser.Math.Between(200, 350);
+                    const y = Phaser.Math.Between(400, 550);
+                
+                    images.at(i)!.setPosition(x, y);
+                }
             }
-
+           
             if (this.data.get('solvedJigsaw')) {
                 for (let index = 0; index < images.length; index++) {
                     images.at(index)?.setY(298);
