@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "y",
+    "public": "CRA-CHARITY-A",
     "ignore": [
       "firebase.json",
       "**/.*",
