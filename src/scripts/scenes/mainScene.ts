@@ -61,7 +61,7 @@ export default class MainScene extends Phaser.Scene {
     if (MainScene.selectedLanguage === 'English') {
       this.languageText.setText("This option cannot be switched in-game");
     } else if (MainScene.selectedLanguage === 'French') {
-      this.languageText.setText("Cette option ne peut pas être changée en cours de partie");
+      this.languageText.setText("Cette option ne peut pas être modifiée pendant le jeu");
     }
   }
 
