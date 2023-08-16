@@ -32,7 +32,7 @@ export default class Game extends Phaser.Scene {
           this.lastKey = this.scene.get('puzzleSeven').data.get('solvedJigsaw'); // gets data from other scene
           puzzle5.setInteractive();
           puzzle5.on('pointerup', () => {
-            
+            if(this.lastKey)
             this.scene.start('puzzleFive');
           });
 
