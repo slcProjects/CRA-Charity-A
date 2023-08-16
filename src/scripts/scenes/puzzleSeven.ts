@@ -62,12 +62,21 @@ export default class Puzzle7 extends Phaser.Scene {
                 );
                 var value = Phaser.Math.Between(-150, 150);
                 outlines.push(outline);
-                let image = this.add.image(400 + value, 537 + value, 'flag')
+                let image;
+                if(MainScene.selectedLanguage === 'English'){
+                image = this.add.image(400 + 150, 400 + 150, 'flag')
                     .setCrop(pieceSize * y, pieceSize * x, pieceSize, pieceSize)
                     .setDepth(1)
                     .setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x, pieceSize, pieceSize), Phaser.Geom.Rectangle.Contains)
                     .setInteractive({ useHandCursor: true });
-
+                }
+                else{
+                image = this.add.image(400 + 150, 400 + 150, 'flagFrench')
+                    .setCrop(pieceSize * y, pieceSize * x, pieceSize, pieceSize)
+                    .setDepth(1)
+                    .setInteractive(new Phaser.Geom.Rectangle(pieceSize * y, pieceSize * x, pieceSize, pieceSize), Phaser.Geom.Rectangle.Contains)
+                    .setInteractive({ useHandCursor: true });
+                }
                 this.input.setDraggable(image, true);
 
                 images.push(image);

@@ -14,7 +14,7 @@ export default class Game extends Phaser.Scene {
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
         
-      this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+      this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
         
 
     
@@ -57,7 +57,7 @@ export default class Game extends Phaser.Scene {
           puzzle3.x = 1020;
           puzzle3.y = 350;
          
-          puzzle3.setInteractive();
+          puzzle3.setInteractive({ useHandCursor: true });
           puzzle3.on('pointerup', () => {
             this.scene.start('puzzleThree');
           });
@@ -72,7 +72,7 @@ export default class Game extends Phaser.Scene {
 
           
     
-          var right = this.add.image(1230, 360, 'RightArrow').setInteractive().on('pointerdown', ()=> {
+          var right = this.add.image(1230, 360, 'RightArrow').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
             this.scene.start('MainGame');//This is meant to change pages
     
           });

@@ -100,7 +100,7 @@ export default class Game extends Phaser.Scene {
     
         this.#popup.add([popupBackground, congratulations, enterNameText, this.#nameInput, ContinueButtonPopup]);
     
-        this.input.keyboard.on('keydown', (event) => {
+        this.input.keyboard?.on('keydown', (event) => {
             if (this.#nameInput.text.length < 11) {
                 if (event.key.match(/^[a-zA-Z0-9\s]$/)) {
                     this.#nameInput.text += event.key;

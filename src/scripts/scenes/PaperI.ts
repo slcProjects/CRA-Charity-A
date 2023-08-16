@@ -26,7 +26,7 @@ export default class Paper extends Phaser.Scene {
          image6.setScale(0.3)
         const closeButton = this.add.image(45, 0, 'closeButton');
         closeButton.setOrigin(1, 0);
-        closeButton.setInteractive();
+        closeButton.setInteractive({ useHandCursor: true });
         closeButton.on('pointerdown', this.returnToPreviousScene, this);
         
        

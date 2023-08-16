@@ -8,7 +8,7 @@ export default class Game extends Phaser.Scene {
 
   create() {
     const image = this.add.image(0, 0, 'StoryImage');
-    this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+    this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
     image.setOrigin(0.5);
     image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
     image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);

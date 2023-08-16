@@ -35,7 +35,7 @@ export default class Puzzle2 extends Phaser.Scene {
         const hintScene = createHintScene.call(this, MainScene.selectedLanguage === 'English' ? hintsEnglish : hintsFrench);
         hintScene.call(this);
 
-        this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+        this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
 
         // Add the 'Return' button
         const Return: Phaser.GameObjects.Image = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', () => {

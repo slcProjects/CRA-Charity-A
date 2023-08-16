@@ -57,8 +57,7 @@ export default class Puzzle1 extends Phaser.Scene {
             });
             buttons.push(button);
         }
-
-        this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+        this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
 
        
 

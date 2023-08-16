@@ -26,7 +26,7 @@ export default class Game extends Phaser.Scene {
 
     var Return = this.add
       .image(95, 40, 'Return')
-      .setInteractive()
+      .setInteractive({useHandCursor: true })
       .on('pointerdown', () => {
         this.scene.start('puzzle5-6'); // This is meant to change pages
       });
@@ -76,7 +76,7 @@ export default class Game extends Phaser.Scene {
     const riddleTextBox = this.add.text(770, 430, riddleText, riddleStyle)
 
 
-    this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this);
+    this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
     const box1 = createBox(600, 175);
     const box2 = createBox(800, 175);
     const box3 = createBox(1000, 175);
