@@ -126,9 +126,11 @@ export default class Game extends Phaser.Scene {
             console.log(`Name: ${userName}\nTime: ${GlobalTimer.formatTime(GlobalTimer.getTimer())}`);
             GlobalTimer.resetTimer();
             this.scene.start('MainScene');
+            window.location.reload();
+        }
         }
         
     }
-}
+
 //Author Marco De Melo
 //marco.demelo2@Student.Sl.On.Ca

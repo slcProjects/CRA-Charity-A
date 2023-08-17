@@ -2,8 +2,9 @@ import VolumeManager from '../objects/VolumeManager';
 export default class PreloadScene extends Phaser.Scene {
   constructor() {
     super({ key: 'PreloadScene' })
+    this.currentSongIndex = Phaser.Math.Between(1, 6);
   }
-
+  private currentSongIndex: number;
   preload() {
     this.load.image('phaser-logo', 'assets/img/phaser-logo.png')
     this.load.image('EnglishB','./assets/img/englishButton.png')
@@ -88,16 +89,28 @@ export default class PreloadScene extends Phaser.Scene {
     
   }
   playRandomSong() {
-    const currentSongIndex = Phaser.Math.Between(1, 6);
-    const music = this.sound.add('Song' + currentSongIndex, {
+    const maxSongs = 6;
+
+    // Calculate the next song index in a circular manner
+    let nextSongIndex = this.currentSongIndex + 1;
+    if (nextSongIndex > maxSongs) {
+        nextSongIndex = 1;
+    }
+
+    const music = this.sound.add('Song' + this.currentSongIndex, {
         volume: VolumeManager.getVolume() / 100,
-        loop: true
     });
+
+    music.once('complete', () => {
+        // Update the current song index
+        this.currentSongIndex = nextSongIndex;
+
+        // Play the next song when the current one completes
+        this.playRandomSong();
+    });
+
     music.play();
-
-
-    
 }
-
+}
   
-}
+
