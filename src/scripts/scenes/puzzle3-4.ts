@@ -31,7 +31,7 @@ export default class Game extends Phaser.Scene {
 
           puzzle7.setInteractive();
           puzzle7.on('pointerup', () => {
-            
+            if(this.gotKey)
             this.scene.start('puzzleSeven');
           });
           
