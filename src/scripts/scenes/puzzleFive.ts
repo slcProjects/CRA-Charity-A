@@ -24,6 +24,7 @@ export default class Game extends Phaser.Scene {
   const hintScene = createHintScene.call(this, MainScene.selectedLanguage === 'English' ? hintsEnglish : hintsFrench);
   hintScene.call(this);
 
+
     var Return = this.add
       .image(95, 40, 'Return')
       .setInteractive({useHandCursor: true })
@@ -77,9 +78,9 @@ export default class Game extends Phaser.Scene {
 
 
     this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
-    const box1 = createBox(600, 175);
-    const box2 = createBox(800, 175);
-    const box3 = createBox(1000, 175);
+    const box1 = createBox(300, 175);
+    const box2 = createBox(500, 175);
+    const box3 = createBox(700, 175);
 
     const boxes = [box1, box2, box3];
     const droppedBottles: (Phaser.GameObjects.Image | undefined)[] = [undefined, undefined, undefined];

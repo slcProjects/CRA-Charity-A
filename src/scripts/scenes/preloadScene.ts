@@ -63,13 +63,11 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('Pz2PImg4', '/assets/img/Pz2Img4.png')
     this.load.image('Pz2PImg5', '/assets/img/Pz2Img5.png')
     this.load.image('Pz2PImg6', '/assets/img/Pz2Img6.png')
-    for (var i = 1; i <= 6; i++) {
-      this.load.audio('Song' + i, '/assets/Music/Song' + i + '.mp3');
-  }
+
   }
 
   create() {
-    this.playRandomSong();
+  
 
     this.scene.start('MainScene')
 
@@ -88,29 +86,8 @@ export default class PreloadScene extends Phaser.Scene {
     // else console.log('The mainScene class will not even be loaded by the browser')
     
   }
-  playRandomSong() {
-    const maxSongs = 6;
 
-    // Calculate the next song index in a circular manner
-    let nextSongIndex = this.currentSongIndex + 1;
-    if (nextSongIndex > maxSongs) {
-        nextSongIndex = 1;
-    }
 
-    const music = this.sound.add('Song' + this.currentSongIndex, {
-        volume: VolumeManager.getVolume() / 100,
-    });
-
-    music.once('complete', () => {
-        // Update the current song index
-        this.currentSongIndex = nextSongIndex;
-
-        // Play the next song when the current one completes
-        this.playRandomSong();
-    });
-
-    music.play();
-}
 }
   
 

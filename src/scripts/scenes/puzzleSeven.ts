@@ -58,7 +58,7 @@ export default class Puzzle7 extends Phaser.Scene {
                     230 + x * pieceSize,
                     pieceSize,
                     pieceSize,
-                    0x808080
+                    0xFFFFFF
                 );
                 var value = Phaser.Math.Between(-150, 150);
                 outlines.push(outline);
