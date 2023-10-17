@@ -8,7 +8,7 @@ export default class Puzzle2 extends Phaser.Scene {
     private selectedSymbols: number[] = [];
     private correctOrder: number[] = [4, 1, 3, 5, 2, 0];
     private symbolButtonActivated: boolean[] = [];
-    private showSymbols;
+    public Symbols : String[];
 
     constructor() {
         super({ key: 'puzzleTwo' });
@@ -29,7 +29,7 @@ export default class Puzzle2 extends Phaser.Scene {
         var hintsFrench = [
             "Indice 1: Lisez le papier.",
             "Indice 2: Peut-être que les images ont un rapport avec le puzzle.",
-            "Indice 3: Essayez de penser à la première lettre et au nombre d'images. (En anglais)"
+            "Indice 3: Essayez de penser à la première lettre et au nombre d'images."
         ];
 
         const hintScene = createHintScene.call(this, MainScene.selectedLanguage === 'English' ? hintsEnglish : hintsFrench);
@@ -38,9 +38,21 @@ export default class Puzzle2 extends Phaser.Scene {
         this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
 
         // Add the 'Return' button
-        const Return: Phaser.GameObjects.Image = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', () => {
-            this.scene.start('MainGame');
-        });
+        if(MainScene.selectedLanguage==='English')
+        {
+            var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+                this.scene.start('MainGame');//This is meant to change pages
+        
+              });
+        }
+        else if(MainScene.selectedLanguage==='French')
+        {
+            var Return = this.add.image(95, 40, 'Retour').setInteractive().on('pointerdown', ()=> {
+                this.scene.start('MainGame');//This is meant to change pages
+        
+              });
+        }
+       
 
         // Change antler to be with key2 from the second puzzle
         var Paper = this.add.image(1150, 500, 'Paper').setInteractive().on('pointerdown', () => {
@@ -58,13 +70,15 @@ export default class Puzzle2 extends Phaser.Scene {
         });
 
         // Create the book symbols
-        const symbols: string[] = ['△', 'C', '8', '●', 'A', '4'];
+
         const symbolPositionsX: number[] = [285, 395, 490, 645, 653, 570];
         const symbolPositionsY: number[] = [210, 210, 210, 210, 400, 400]; // Unique y-coordinates for each rectangle
         const symbolWidths: number[] = [50, 36, 40, 65, 40, 35]; // Widths for each rectangle
         const symbolHeights: number[] = [170, 170, 170, 170, 160, 160]; // Heights for each rectangle
-
-        for (let i = 0; i < symbols.length; i++) {
+        const symbolsEnglish: string[] = ['△', 'C', '8', '●', 'A', '4']; // 4, 1, 3, 5, 2, 0
+        const symbolsFrench: string[] = ['△', 'C', '8', '●', 'P', '4']; // Change 'A' to 'P'
+        for (let i = 0; i < symbolPositionsX.length; i++) {
+         
             const symbolButton: Phaser.GameObjects.Rectangle = this.add.rectangle(
                 symbolPositionsX[i],
                 symbolPositionsY[i],
@@ -75,7 +89,7 @@ export default class Puzzle2 extends Phaser.Scene {
             const symbolText: Phaser.GameObjects.Text = this.add.text(
                 symbolPositionsX[i],
                 symbolPositionsY[i], // Use the corresponding y-coordinate
-                symbols[i],
+                MainScene.selectedLanguage === 'English' ? symbolsEnglish[i] : symbolsFrench[i],
                 { font: 'bold 14px Arial', color: '#000000', wordWrap: { width: 60 }, align: 'center' }
             );
 

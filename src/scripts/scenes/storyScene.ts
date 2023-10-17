@@ -23,24 +23,33 @@ export default class Game extends Phaser.Scene {
     ];
 
     const contentFrench = [
-      'Au cœur de la nature sauvage canadienne, vous vous tenez devant une vieille cabane d\'hiver,',
-      'sa mystique vous invite à explorer ses secrets. En entrant, cherchant l\'aventure,',
-      'vous déclenchez involontairement un mécanisme qui vous enferme à l\'intérieur, ',
-      'vous laissant piégé dans son étreinte glacée. Avec le feu qui diminue lentement, ',
-      'projetant des ombres vacillantes dans la pièce, vous réalisez que le temps joue contre vous.'
+      'Au cœur de la nature sauvage canadienne, vous vous tenez devant une vieille cabane d\'hiver.',
+      'Son apparence mystique vous invite à explorer ses secrets. À votre entrée, vous déclenchez ',
+      'involontairement un mécanisme vous enfermant à l\'intérieur vous laissant piégé dans son antre glacée. ',
+      'Avec le feu diminuant lentement et projetant des ombres vacillantes dans la pièce.',
+      'vous réalisez que le temps joue contre vous. '
     ];
 
     const content = MainScene.selectedLanguage === 'English' ? contentEnglish : contentFrench;
 
     // Adjust the X and Y coordinates for the text based on the selected language
-    const textX = MainScene.selectedLanguage === 'English' ? this.cameras.main.centerX - 500 : this.cameras.main.centerX - 620;
-    const textY = this.cameras.main.centerY - 200; // Adjusted the Y coordinate
+    const textX = MainScene.selectedLanguage === 'English' ? this.cameras.main.centerX - 620 : this.cameras.main.centerX - 620;
+    const textY = this.cameras.main.centerY + 0; // Adjusted the Y coordinate
     const yOffset = -100; // Adjust the Y offset as needed
 
     var text = this.add.text(textX, textY + yOffset, content, textStyle);
-    const Continue = this.add.image(1165, 680, 'Continue').setInteractive();
+    if(MainScene.selectedLanguage === 'English')
+    {
+      const Continue = this.add.image(1165, 680, 'Continue').setInteractive();
+      Continue.on('pointerdown', this.buttonClicked, this);
+    }
+    else if (MainScene.selectedLanguage==='French')
+    {
+      const Continue = this.add.image(1165, 680, 'Continuer').setInteractive();
+      Continue.on('pointerdown', this.buttonClicked, this);
+    }
+    
 
-    Continue.on('pointerdown', this.buttonClicked, this);
   }
 
   goToOptionsScene() {

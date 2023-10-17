@@ -7,6 +7,8 @@ export default class MainScene extends Phaser.Scene { // Defining the MainScene 
   languageImage: Phaser.GameObjects.Image; // Declaring a variable to store a Phaser Image object for the language image
   languageText: Phaser.GameObjects.Text; // Declaring a variable to store a Phaser Text object for the language text
   bottomLeftText: Phaser.GameObjects.Text;
+  StartGameButton: Phaser.GameObjects.Image;
+  
   constructor() {
     super({ key: 'MainScene' }); // Calling the constructor of the parent class with a specific key
 
@@ -20,10 +22,12 @@ export default class MainScene extends Phaser.Scene { // Defining the MainScene 
     image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height); // Scaling the image to fit the camera
 
     this.input.keyboard.on('keydown-ESC', this.goToOptionsScene, this); // Listening for the 'ESC' key press to trigger the goToOptionsScene function
-
-    const StartGameEngButton = this.add.image(645, 360, 'StartGameEngButton').setInteractive(); // Adding an interactive image button at (645, 360) with the 'StartGameEngButton' key
-    StartGameEngButton.on('pointerdown', this.buttonClicked, this); // Listening for a pointer click on the button to trigger the buttonClicked function
-
+  
+      const StartGameButton = this.add.image(645, 360, 'StartGameEngButton').setInteractive(); // Adding an interactive image button at (645, 360) with the 'StartGameEngButton' key
+      StartGameButton.on('pointerdown', this.buttonClicked, this); // Listening for a pointer click on the button to trigger the buttonClicked function
+      this.StartGameButton = StartGameButton;
+   
+    
     const hitArea = this.add.rectangle(this.cameras.main.centerX, 460, 150, 50, 0x000000, 0).setInteractive(); // Creating an invisible interactive hit area rectangle
 
     this.languageButton = this.add.image(this.cameras.main.centerX, 460, 'LanguageButton').setInteractive(); // Adding an interactive image button for language toggle
@@ -35,10 +39,11 @@ export default class MainScene extends Phaser.Scene { // Defining the MainScene 
     this.languageText = this.add.text(this.cameras.main.centerX, 500, '', introStyle); // Adding a text object for language display
     this.languageText.setOrigin(0.5); // Setting the origin of the text to its center
 
+   
     if (MainScene.selectedLanguage === 'English') {
       this.languageText.setText("This option cannot be switched in-game"); // Setting text for the language text based on the selected language
     } else if (MainScene.selectedLanguage === 'French') {
-      this.languageText.setText("Cette option ne peut pas être changée en cours de partie"); // Setting text for the language text based on the selected language
+      this.languageText.setText("Cette option ne peut être modifiée une fois le jeu commencé"); // Setting text for the language text based on the selected language
     }
     
       // Initialize the bottom left text element
@@ -56,16 +61,18 @@ export default class MainScene extends Phaser.Scene { // Defining the MainScene 
       MainScene.selectedLanguage = 'French'; // Changing the selected language
       this.languageImage.setTexture('FrenchB'); // Changing the texture of the language image
       this.bottomLeftText.setText("Appuyez sur Échap pour accéder à votre menu d’options et voir votre temps");
+      this.StartGameButton.setTexture('StartGameFreButton')
     } else if (MainScene.selectedLanguage === 'French') {
       MainScene.selectedLanguage = 'English';
       this.languageImage.setTexture('EnglishB');
       this.bottomLeftText.setText("Press Esc to access your options menu and see your time");
+      this.StartGameButton.setTexture('StartGameEngButton')
     }
 
     if (MainScene.selectedLanguage === 'English') {
       this.languageText.setText("This option cannot be switched in-game"); // Updating the language text based on the selected language
     } else if (MainScene.selectedLanguage === 'French') {
-      this.languageText.setText("Cette option ne peut pas être modifiée pendant le jeu");
+      this.languageText.setText("Cette option ne peut être modifiée une fois le jeu commencé");
     }
   }
 

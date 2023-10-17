@@ -1,13 +1,13 @@
 export const textStyle = {
-    font: 'bold 28px Arial',
-    fill: '#FFFFFF', // White color
-    align: 'center'
+    font: 'bold 22px Arial',
+    fill: '#50C878', // Emerald green
+    align: 'left'
   };
 
   export const introStyle = {
-    font: 'bold 32px Arial',
+    font: 'bold 26px Arial',
     fill: '#000000', // White color
-    align: 'center'
+    align: 'left'
   };
 
   export const paperStyle = {
@@ -15,13 +15,24 @@ export const textStyle = {
     fill: '#000000', // White color
     align: 'center'
   };
+  export const endStyle = {
+    fontFamily: 'Arial',
+    fontSize: '26px',
+    Style: 'Strong' + 'bold',
+    color: '#4CBB17', // kelly green color
+    align: 'left', // Text alignment
+    wordWrap: {
+      width: 700, // Maximum width of the text
+    },
+  };
   export const riddleStyle = {
     fontFamily: 'Arial',
-    fontSize: '24px',
-    color: '#000000', // Light black color
+    fontSize: '23px',
+    Style: 'Bold',
+    color: '#013220', // emerald green color
     align: 'center', // Text alignment
     wordWrap: {
-      width: 300, // Maximum width of the text
+      width: 320, // Maximum width of the text
     },
   };
   //Author Marco De Melo

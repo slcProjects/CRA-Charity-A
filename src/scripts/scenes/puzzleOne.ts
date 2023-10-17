@@ -22,20 +22,29 @@ export default class Puzzle1 extends Phaser.Scene {
         image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
 
         const hintsEnglish = [
-            "Hint 1: Try reading the paper.",
-            "Hint 2: Read the paper closely, it might be helpful.",
-            "Hint 3: It seems the code is a 4-digit combination."
+            "Hint 1: Read the paper closely, it might be helpful.",
+            "Hint 2: It seems the code is a 4-digit combination."
         ];
 
         const hintsFrench = [
-            "Indice 1 : Essayez de lire le papier.",
-            "Indice 2 : Lisez attentivement le papier, cela pourrait être utile.",
-            "Indice 3 : Le code semble être une combinaison de 4 chiffres."
+            "Indice 1 : Lisez attentivement le papier, cela pourrait être utile.",
+            "Indice 2 : Le code est une combinaison à 4 chiffres. "
         ];
-        var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
-          this.scene.start('MainGame');//This is meant to change pages
-  
-        });
+        if(MainScene.selectedLanguage==='English')
+        {
+            var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+                this.scene.start('MainGame');//This is meant to change pages
+        
+              });
+        }
+        else if(MainScene.selectedLanguage==='French')
+        {
+            var Return = this.add.image(95, 40, 'Retour').setInteractive().on('pointerdown', ()=> {
+                this.scene.start('MainGame');//This is meant to change pages
+        
+              });
+        }
+       
         const hints = MainScene.selectedLanguage === 'English' ? hintsEnglish : hintsFrench;
         const hintScene = createHintScene.call(this, hints);
         hintScene.call(this);

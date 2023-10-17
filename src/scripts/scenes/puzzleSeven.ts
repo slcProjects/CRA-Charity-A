@@ -21,20 +21,31 @@ export default class Puzzle7 extends Phaser.Scene {
             this.data.set('solvedJigsaw', false);
         }
 
-        var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', () => {
-            this.scene.start('puzzle3-4'); // This is meant to change pages
-        });
+        if(MainScene.selectedLanguage==='English')
+        {
+            var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+                this.scene.start('puzzle3-4');//This is meant to change pages
+        
+              });
+        }
+        else if(MainScene.selectedLanguage==='French')
+        {
+            var Return = this.add.image(95, 40, 'Retour').setInteractive().on('pointerdown', ()=> {
+                this.scene.start('puzzle3-4');//This is meant to change pages
+        
+              });
+        }
+       
+
 
         var hintsEnglish = [
-            "Hint 1: Image of a Canadian flag with writing",
-            "Hint 2: Try aligning the text and symbols first",
-            "Hint 3: They will snap on the background if you are close enough"
+            "Hint 1: Image of a flag with writing",
+            "Hint 2: Go to the kitchen when you are done this puzzle"
         ];
 
         var hintsFrench = [
-            "Indice 1: Image d'un drapeau canadien avec de l'écriture",
-            "Indice 2: Essayez d'aligner d'abord le texte et les symboles",
-            "Indice 3: Ils se fixeront sur l'arrière-plan si vous êtes assez proche"
+            "Indice 1: Image d'un drapeau",
+            "Indice 2: Retourner à la cuisine une fois cette énigme résolue "
         ];
 
         const hintScene = createHintScene.call(this, MainScene.selectedLanguage === 'English' ? hintsEnglish : hintsFrench);

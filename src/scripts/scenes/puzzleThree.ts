@@ -21,13 +21,13 @@ export default class Puzzle3 extends Phaser.Scene {
         var hintsEnglish = [
             "Hint 1: The Key is in a different room",
             "Hint 2: Often perceived as valuable",
-            "Hint 3: Used to make jewelry"
+            "Hint 3: may shines brightly"
         ];
 
         var hintsFrench = [
             "Indice 1: La clé est dans une pièce différente",
             "Indice 2: Souvent perçue comme précieuse",
-            "Indice 3: Utilisée pour fabriquer des bijoux"
+            "Indice 3: peut briller de mille feux"
         ];
 
         const hintScene = createHintScene.call(this, MainScene.selectedLanguage === 'English' ? hintsEnglish : hintsFrench);
@@ -46,8 +46,14 @@ export default class Puzzle3 extends Phaser.Scene {
         const riddle2ImageKey = MainScene.selectedLanguage === 'English' ? 'Riddle2' : 'Riddle2Fr';
         var riddle = this.add.image(900, 300, riddle1ImageKey).setScale(0.5);
         let key = this.add.image(850, 500, 'Key1').setScale(0.1, 0.1).setInteractive().setVisible(false);
-        var textEntry = this.add.text(850, 500, 'Start typing...', { font: '32px Courier', color: 'black' });
+        // Define the text based on the selected language
+        const textEntryText = MainScene.selectedLanguage === 'English' ? 'Start typing...' : 'Vous pouvez commencer à écrire';
+
+        // Adjust the position of the text for the French language
+        const textEntryX = MainScene.selectedLanguage === 'English' ? 850 : 650; // Adjust X coordinate for French
+        const textEntry = this.add.text(textEntryX, 500, textEntryText, { font: '32px Courier', color: 'black' });
         textEntry.visible = false;
+
 
         this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
 
@@ -99,19 +105,37 @@ export default class Puzzle3 extends Phaser.Scene {
                 textEntry.text += event.key;
             }
 
-            if (textEntry.text.toLowerCase() == 'gem' ||textEntry.text.toLowerCase() =='bijou') {
+            if (textEntry.text.length > 5 || event.keyCode === 13) {
+                // If the text is longer than 5 characters or Enter key is pressed, clear the text
+                textEntry.text = '';
+            } else if (MainScene.selectedLanguage === 'English' && textEntry.text.toLowerCase() === 'gem') {
+                // If the selected language is English and the text is 'gem', perform these actions
                 this.data.set('solvedRiddle', true);
                 textEntry.visible = false;
                 key.visible = true;
-            } else if (textEntry.text.length > 5 || event.keyCode === 13) {
-                // enter
-                textEntry.text = '';
+            } else if (MainScene.selectedLanguage === 'French' && textEntry.text.toLowerCase() === 'bijou') {
+                // If the selected language is French and the text is 'bijou', perform these actions
+                this.data.set('solvedRiddle', true);
+                textEntry.visible = false;
+                key.visible = true;
             }
         });
-
-        var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', () => {
-            this.scene.start('puzzle3-4'); // This is meant to change pages
-        });
+        if(MainScene.selectedLanguage==='English')
+        {
+            var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+                this.scene.start('puzzle3-4');//This is meant to change pages
+        
+              });
+        }
+        else if(MainScene.selectedLanguage==='French')
+        {
+            var Return = this.add.image(95, 40, 'Retour').setInteractive().on('pointerdown', ()=> {
+                this.scene.start('puzzle3-4');//This is meant to change pages
+        
+              });
+        }
+       
+       
     }
 
     update(time, delta) {

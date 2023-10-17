@@ -1,3 +1,4 @@
+import MainScene from "./mainScene";
 
 
 export default class Paper extends Phaser.Scene {
@@ -14,14 +15,23 @@ export default class Paper extends Phaser.Scene {
 
        
          const image1 = this.add.image(250,150, 'Pz2PImg1')
-         const image2 = this.add.image(600,150, 'Pz2PImg2')
+         let image2;
+
+         if (MainScene.selectedLanguage === 'English') {
+             image2 = this.add.image(600, 150, 'Pz2PImg2');
+             image2.setScale(0.43);
+         } else if (MainScene.selectedLanguage === 'French') {
+             image2 = this.add.image(600, 150, 'Pz2Img2Fr');
+             image2.setScale(0.60);
+         }
+         
          const image3 = this.add.image(900,150, 'Pz2PImg3')
          const image4 = this.add.image(250,500, 'Pz2PImg4')
          const image5 = this.add.image(600,500, 'Pz2PImg5')
          const image6 = this.add.image(900,500, 'Pz2PImg6')
 
          image1.setScale(0.25)
-         image2.setScale(0.35)
+
          image3.setScale(1)
          image6.setScale(0.3)
         const closeButton = this.add.image(45, 0, 'closeButton');

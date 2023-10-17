@@ -25,13 +25,6 @@ export default class Game extends Phaser.Scene {
   hintScene.call(this);
 
 
-    var Return = this.add
-      .image(95, 40, 'Return')
-      .setInteractive({useHandCursor: true })
-      .on('pointerdown', () => {
-        this.scene.start('puzzle5-6'); // This is meant to change pages
-      });
-
       const image = this.add.image(0,0,'KitchenM')
       image.setOrigin(0.5);
       image.setPosition(this.cameras.main.centerX, this.cameras.main.centerY);
@@ -41,6 +34,20 @@ export default class Game extends Phaser.Scene {
     key5.setScale(0.07);
     key5.setAlpha(0);
     
+  if(MainScene.selectedLanguage==='English')
+  {
+      var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
+          this.scene.start('puzzle5-6');//This is meant to change pages
+  
+        });
+  }
+  else if(MainScene.selectedLanguage==='French')
+  {
+      var Return = this.add.image(95, 40, 'Retour').setInteractive().on('pointerdown', ()=> {
+          this.scene.start('puzzle5-6');//This is meant to change pages
+  
+        });
+  }
 
     const createBox = (x: number, y: number) => {
       return this.add
@@ -50,25 +57,21 @@ export default class Game extends Phaser.Scene {
         .setData('id', null)
         .setFillStyle(0xffffff, 0); // Set the fill color to white (0xffffff) and fillAlpha to 0 (fully transparent)
     };
-    var Return = this.add.image(95, 40, 'Return').setInteractive().on('pointerdown', ()=> {
-      this.scene.start('puzzle5-6');//This is meant to change pages
-
-    });
     const riddleBottleB = MainScene.selectedLanguage === 'English' ?
-            "Bottle B: 'Lighter than C.'" :
-            "Bouteille B:'Plus légère que C.'";
+            "Bottle B: Lighter than C" :
+            "Bouteille B:Plus légère que C";
 
         const riddleBottleC = MainScene.selectedLanguage === 'English' ?
-            "Bottle C: 'Heavier than A.'" :
-            "Bouteille C:'Plus lourde que A.'";
+            "Bottle C: Heavier than A" :
+            "Bouteille C:Plus lourde que A";
 
         const riddleBottleA = MainScene.selectedLanguage === 'English' ?
-            "Bottle A: 'Heavier than B.'" :
-            "Bouteille A:'Plus lourde que B.'";
+            "Bottle A: Heavier than B" :
+            "Bouteille A:Plus lourde que B";
 
         const riddleText = MainScene.selectedLanguage === 'English' ?
-            "Arrange the bottles from heaviest to lightest" :
-            "Organiser les bouteilles du plus lourd au plus léger";
+            "Arrange the bottles from heaviest to lightest." :
+            "Organiser les bouteilles de la plus lourde à la plus légère.";
 
     // Create text objects for each riddle using riddleStyle
     const textBottleB = this.add.text(750, 500, riddleBottleB, riddleStyle);
@@ -117,9 +120,11 @@ export default class Game extends Phaser.Scene {
       }
     };
 
-    const bottleA = this.add.image(150, 345, 'bottleA').setScale(0.15).setData('id', 'A');
-    const bottleB = this.add.image(300, 345, 'bottleB').setScale(0.15).setData('id', 'B');
-    const bottleC = this.add.image(450, 345, 'bottleC').setScale(0.15).setData('id', 'C');
+    const langSuffix = MainScene.selectedLanguage === 'English' ? '' : 'Fr';
+
+    const bottleA = this.add.image(150, 345, `bottleA${langSuffix}`).setScale(0.15).setData('id', 'A');
+    const bottleB = this.add.image(300, 345, `bottleB${langSuffix}`).setScale(0.15).setData('id', 'B');
+    const bottleC = this.add.image(450, 345, `bottleC${langSuffix}`).setScale(0.15).setData('id', 'C');
 
     const bottles = [bottleA, bottleB, bottleC];
 

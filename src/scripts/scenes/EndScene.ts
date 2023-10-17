@@ -1,4 +1,4 @@
-import { textStyle } from '../objects/fpsStyle';
+import { endStyle, textStyle } from '../objects/fpsStyle';
 import GlobalTimer from '../objects/globalTimer'; // Import the global timer
 import GameM from './MainGame';
 import MainScene from './mainScene';
@@ -34,30 +34,36 @@ export default class Game extends Phaser.Scene {
         ];
     
         const contentFrench = [
-            'vous avez échappé à la vieille cabane d\'hiver dans la nature sauvage canadienne,',
-            'vous avez exploré ses secrets. En sortant dans la neige, ',
-            'vous ressentez un sentiment d\'accomplissement car vous avez échappé,',
-            'Cette étrange maison pleine de puzzles. Maintenant,',
-            ' vous partez en voyage pour raconter à vos amis ce qui s\'est passé.',                                                        
+            'Vous avez échappé et exploré les secrets de la vieille cabane d\'hiver dans la nature sauvage',
+             'canadienne',
+             'Vous pouvez être fière d\'avoir accompli ces énigmes. ',
+             'Vous pouvez maintenant inviter vos amis à relever le défi et s\'échapper de la cabane d\'hiver.',                                                    
             '                                                             ',
             '                                                             ',
             '                                                             ',
             'Créé par Marco De Melo et Riley Lawrence-Nebesnuik',
-            'Translation francais par Marco De Melo'
+            'Traduction: Marco De Melo'
         ];
     
         const selectedLanguageContent = MainScene.selectedLanguage === 'English' ? contentEnglish : contentFrench;
     
-        const textX = MainScene.selectedLanguage === 'English' ? this.cameras.main.centerX - 285 : this.cameras.main.centerX - 435; // Adjusted the X coordinate for English text
+        const textX = MainScene.selectedLanguage === 'English' ? this.cameras.main.centerX - 600 : this.cameras.main.centerX - 605; // Adjusted the X coordinate for English text
         const textY = this.cameras.main.centerY - 330;
     
-        var text = this.add.text(textX, textY, selectedLanguageContent, textStyle);
-        text.setColor('fad643');
+        var text = this.add.text(textX, textY, selectedLanguageContent, endStyle);
         text.setLineSpacing(17);
         text.setScale(0.75);
     
-        const Continue = this.add.image(1000, 680, 'Continue').setInteractive();
-        Continue.on('pointerdown', this.showPopup, this);
+        if(MainScene.selectedLanguage === 'English')
+        {
+          const Continue = this.add.image(1165, 680, 'Continue').setInteractive();
+          Continue.on('pointerdown', this.showPopup, this);
+        }
+        else if (MainScene.selectedLanguage==='French')
+        {
+          const Continue = this.add.image(1165, 680, 'Continuer').setInteractive();
+          Continue.on('pointerdown', this.showPopup, this);
+        }
     }
 
     showPopup() {

@@ -1,14 +1,17 @@
-
 import globalTimer from '../objects/globalTimer';
+import MainScene from './mainScene';
+import { textStyle } from '../objects/fpsStyle';
 export default class GameM extends Phaser.Scene {
 public key1; 
 public counter: number = 0;
 public resetGame: boolean = false;
+  languageText: Phaser.GameObjects.Text;
     constructor() {
         super({ key: 'MainGame' })
        
       }
 
+      
 /*pointerup: This event is triggered when a pointer (mouse button or touch) is released after being pressed down on
   a game object. It can be used to detect when the player stops clicking or touching the object.
 
@@ -37,7 +40,14 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
       else {
         console.log("U CAN'T ENTER")
       }
+      const languageTextEg = [
+        "You must navigate the room and solve the puzzles to find the keys that will allow you to escape."
+      ];
+      const languageTextFr= [
+        "Vous devez parcourir la pièce et résoudre les énigmes pour trouver les clés qui vous permettront de vous échapper."
+      ];
     
+      const content = MainScene.selectedLanguage === 'English' ? languageTextEg[0] : languageTextFr[0];
   
       const image = this.add.image(0,0,'lobby')
       image.setOrigin(0.5);
@@ -45,12 +55,8 @@ pointerover: The pointerover event is triggered when the pointer moves onto a ga
       image.setScale(this.cameras.main.width / image.width, this.cameras.main.height / image.height);
       this.input.keyboard?.on('keydown-ESC', this.goToOptionsScene, this);
       this.key1 = this.scene.get('puzzleOne').data.get('fireKey');
-
-      if (this.data.get('antler') == null) { // initial false
-        this.data.set('antler', false);
-      }
-        //Change antler to be with key2 from the second puzzle
-
+   
+   var text= this.add.text(0,5,content,textStyle);
         var left = this.add.image(50, 360, 'LeftArrow').setInteractive({ useHandCursor: true }).on('pointerdown', ()=> {
             this.scene.start('puzzle3-4');//This is meant to change pages
     

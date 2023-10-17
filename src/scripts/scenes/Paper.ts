@@ -21,21 +21,24 @@ export default class Paper extends Phaser.Scene {
         ];
 
         const contentFrench = [
-            'Il y avait une famille de 5 personnes vivant dans une cabane d\'hiver,',
-            'ils appréciaient leur vie simple, s\'endormant à 8 heures du soir chaque jour. ',
-            'Un jour, il y a eu une effraction, tout le famille allait bien,',
-            'mais ils ont volé 3 objets importants pour eux. Depuis ce jour,',
+            'Une famille de 5 personnes vivaient dans la cabane d\'hiver et appréciaient leur vie tranquille,',
+            ' s\'endormant à 8 heure chaque soir. Un jour, une infraction eu lieu et trois objets ont été dérobés.',
+            'Depuis ce jour, leurs biens sont sécurisés et protégés par des serrures et des clés cachées.',
+            'Une suite d\'énigmes s\'assure que rien ne pourrait être volé à nouveau.',
             'ils ont sécurisé leurs biens avec des serrures et des clés cachées,',
-            'utilisant des énigmes pour s\'assurer que rien d\'important ne pourrait être volé à nouveau.',
-            'Finalement, le 9 mai, la famille a déménagé à cause du stress.'
+            'Finalement, le 9 mai dernier, la famille a pris la décision de déménager à cause du stress.'
         ];
+  
+
+
+
 
         const content = MainScene.selectedLanguage === 'English' ? contentEnglish : contentFrench;
 
         // Adjust the X-coordinate for the French text by adding 100 units
         const textX = MainScene.selectedLanguage === 'English'
             ? this.cameras.main.centerX
-            : this.cameras.main.centerX + 30;
+            : this.cameras.main.centerX + 0;
           
 
         var text = this.add.text(textX, this.cameras.main.centerY - 50, content, paperStyle);

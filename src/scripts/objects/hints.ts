@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import MainScene from '../scenes/mainScene';
 
 export function createHintScene(hints: string[]) {
   return function(this: Phaser.Scene) {
@@ -82,7 +83,9 @@ export function createHintScene(hints: string[]) {
     }
 
     // Event listener for the hints button click
-    const hintsButton = scene.add.image(DEFAULT_WIDTH - 30, 30, 'hintsButton')
+    if(MainScene.selectedLanguage === 'English')
+    {
+      const hintsButton = scene.add.image(DEFAULT_WIDTH - 30, 30, 'hintsButton')
       .setInteractive()
       .setTint(0x777777)
       .setScale(0.5)
@@ -93,6 +96,22 @@ export function createHintScene(hints: string[]) {
     // Adjust the background size
     popupBackground.displayWidth *= 0.95;
     popupBackground.displayHeight *= 0.95;
+    }
+    else if(MainScene.selectedLanguage==='French')
+    {
+      const hintsButton = scene.add.image(DEFAULT_WIDTH - 30, 30, 'Indices')
+      .setInteractive()
+      .setTint(0x777777)
+      .setScale(0.5)
+      .setOrigin(1, 0)
+      .setDepth(1)
+      .on('pointerdown', showHintPopup);
+
+    // Adjust the background size
+    popupBackground.displayWidth *= 0.95;
+    popupBackground.displayHeight *= 0.95;
+    }
+  
   };
 }
 //Author Marco De Melo
