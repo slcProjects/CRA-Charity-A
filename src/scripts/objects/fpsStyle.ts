@@ -4,6 +4,12 @@ export const textStyle = {
     align: 'left'
   };
 
+  export const storyStyle = {
+    font: 'bold 22px Arial',
+    fill: '#000000', // Emerald green
+    align: 'left'
+  };
+
   export const introStyle = {
     font: 'bold 26px Arial',
     fill: '#000000', // White color
@@ -19,7 +25,7 @@ export const textStyle = {
     fontFamily: 'Arial',
     fontSize: '26px',
     Style: 'Strong' + 'bold',
-    color: '#4CBB17', // kelly green color
+    color: '#000000', // BLACC
     align: 'left', // Text alignment
     wordWrap: {
       width: 700, // Maximum width of the text

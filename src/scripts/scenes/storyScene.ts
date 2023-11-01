@@ -1,4 +1,4 @@
-import { textStyle } from '../objects/fpsStyle';
+import { storyStyle } from '../objects/fpsStyle';
 import MainScene from './mainScene'; // Update the import path if needed
 
 export default class Game extends Phaser.Scene {
@@ -35,9 +35,25 @@ export default class Game extends Phaser.Scene {
     // Adjust the X and Y coordinates for the text based on the selected language
     const textX = MainScene.selectedLanguage === 'English' ? this.cameras.main.centerX - 620 : this.cameras.main.centerX - 620;
     const textY = this.cameras.main.centerY + 0; // Adjusted the Y coordinate
-    const yOffset = -100; // Adjust the Y offset as needed
+    const yOffset = -100; // Adjust the Y offset as needed|
 
-    var text = this.add.text(textX, textY + yOffset, content, textStyle);
+    const graphics = this.add.graphics();
+    graphics.fillStyle(0xffffff, 1); // 0xffffff is white, and 1 is full opacity
+    if(MainScene.selectedLanguage === 'English')
+    {
+      graphics.fillRect(textX - 10, textY + yOffset - 10, 850, 140);
+    }
+    else if ( MainScene.selectedLanguage === 'French')
+    {
+      graphics.fillRect(textX - 10, textY + yOffset - 10, 1100, 140);
+    }
+    
+  
+ 
+    // Make sure the text is displayed above the white background
+    
+    graphics.setDepth(0); // Lower depth value ensures it's behind the text
+    var text = this.add.text(textX, textY + yOffset, content, storyStyle);
     if(MainScene.selectedLanguage === 'English')
     {
       const Continue = this.add.image(1165, 680, 'Continue').setInteractive();

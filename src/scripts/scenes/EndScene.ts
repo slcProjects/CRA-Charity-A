@@ -49,10 +49,26 @@ export default class Game extends Phaser.Scene {
     
         const textX = MainScene.selectedLanguage === 'English' ? this.cameras.main.centerX - 600 : this.cameras.main.centerX - 605; // Adjusted the X coordinate for English text
         const textY = this.cameras.main.centerY - 330;
+        const graphics = this.add.graphics();
+    graphics.fillStyle(0xffffff, 1); // 0xffffff is white, and 1 is full opacity
+    if(MainScene.selectedLanguage === 'English')
+    {
+      graphics.fillRect(textX - 10, textY - 10, 530, 500);
+    }
+    else if ( MainScene.selectedLanguage === 'French')
+    {
+      graphics.fillRect(textX - 10, textY - 10, 530, 400);
+    }
     
+  
+ 
+    // Make sure the text is displayed above the white background
+    
+    graphics.setDepth(0); // Lower depth value ensures it's behind the text
         var text = this.add.text(textX, textY, selectedLanguageContent, endStyle);
         text.setLineSpacing(17);
         text.setScale(0.75);
+    
     
         if(MainScene.selectedLanguage === 'English')
         {
