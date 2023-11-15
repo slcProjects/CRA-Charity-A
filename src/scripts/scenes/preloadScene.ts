@@ -2,9 +2,9 @@ import VolumeManager from '../objects/VolumeManager';
 export default class PreloadScene extends Phaser.Scene {
   constructor() {
     super({ key: 'PreloadScene' })
-    this.currentSongIndex = Phaser.Math.Between(1, 6);
+  
   }
-  private currentSongIndex: number;
+ 
   preload() {
     this.load.image('phaser-logo', 'assets/img/phaser-logo.png')
     this.load.image('EnglishB','./assets/img/englishButton.png')
